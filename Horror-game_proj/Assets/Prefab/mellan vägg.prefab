@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33673508759155372}
   - component: {fileID: 23192801598576310}
   - component: {fileID: 95214918853649644}
+  - component: {fileID: 65224765385162502}
   m_Layer: 0
   m_Name: "mellan v\xE4gg"
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868290662717078}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.66, y: 1.8512, z: -3.922}
+  m_LocalPosition: {x: 10.2906885, y: 1.941133, z: 16.851929}
   m_LocalScale: {x: 5.7799797, y: 0.019404711, z: 0.46571308}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868290662717078}
   m_Mesh: {fileID: 4300000, guid: 65968e7675736ae4b9004771f7ff50c1, type: 3}
+--- !u!65 &65224765385162502
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868290662717078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999999, y: 209.2591, z: 1.3859638}
+  m_Center: {x: 0.49999994, y: 104.62955, z: 0.6929819}
 --- !u!95 &95214918853649644
 Animator:
   serializedVersion: 3
