@@ -28,6 +28,7 @@ public class Ai : MonoBehaviour
     private bool arrived = false;
     private bool patrollingRoom;
     private GameObject test;
+    public GameObject test1;
 
     public enum AiState { wait, patrolRoom, patrolKeypoint, chasePlayer };
 
