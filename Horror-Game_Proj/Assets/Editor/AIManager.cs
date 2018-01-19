@@ -7,6 +7,7 @@ public class AIManager : EditorWindow {
 
     public GameObject room;
     public GameObject KeyRoom;
+    public GameObject Floor;
 
     [MenuItem("AI/AI Manager")]
 
@@ -39,6 +40,16 @@ public class AIManager : EditorWindow {
                 parent = new GameObject("Rooms");
             }
             Instantiate(KeyRoom, parent.transform);
+        }
+
+        if (GUILayout.Button("Add Floor"))
+        {
+            GameObject parent = GameObject.Find("Floors");
+            if (parent == null)
+            {
+                parent = new GameObject("Floors");
+            }
+            Instantiate(Floor, parent.transform);
         }
     }
 }

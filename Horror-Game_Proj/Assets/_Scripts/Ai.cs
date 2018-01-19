@@ -112,6 +112,10 @@ public class Ai : MonoBehaviour
                     patrollingRoom = true;
                 }
             }
+            else
+            {
+                Debug.LogError("Det finns inga våningar för AI'n att patrullera! Öppna AI managern och lägg till floors");
+            }
         }
 
 
