@@ -200,9 +200,7 @@ public class Ai : MonoBehaviour
     void OnTriggerStay(Collider other) 
     {
         if(other.gameObject.tag == "Player")
-        {
             if(player.GetComponent<Rigidbody>().velocity.x > 0 || player.GetComponent<Rigidbody>().velocity.z > 0)
                 PlayerLastSighting = player.transform.position;
-        }
     }
 }
