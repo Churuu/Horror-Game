@@ -16,7 +16,6 @@ public class Ai : MonoBehaviour
     [Range(100, 180)]
     public int fieldOfViewAngle;
     public bool playerIsVisible = false;
-    [HideInInspector]
     public GameObject currentFloorToPatrol;
 
     private NavMeshAgent agent;
@@ -78,11 +77,13 @@ public class Ai : MonoBehaviour
     {
         playerIsVisible = false;
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
+        Debug.DrawRay(transform.position, dirToTarget);
         if(Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
         {
-            RaycastHit hit; 
+            RaycastHit hit;
             if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit))
             {
+                Debug.Log(hit.collider.gameObject);
                 if(hit.collider.tag == "Player") 
                 {
                     playerIsVisible = true;
@@ -102,20 +103,14 @@ public class Ai : MonoBehaviour
     {
         if (!patrollingRoom)
         {
-            room = rooms[UnityEngine.Random.Range(0, rooms.Length)];
-            if(currentFloorToPatrol.GetComponent<Collider>().bounds.Contains(room.transform.position))
+            room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
+            AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
+            if (!Physics.CheckSphere(AiDestination, 0.5f))
             {
-                AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
-                if (!Physics.CheckSphere(AiDestination, 0.5f))
-                {
-                    agent.SetDestination(AiDestination);
-                    patrollingRoom = true;
-                }
+                agent.SetDestination(AiDestination);
+                patrollingRoom = true;
             }
-            else
-            {
-                Debug.LogError("Det finns inga våningar för AI'n att patrullera! Öppna AI managern och lägg till floors");
-            }
+            
         }
 
 

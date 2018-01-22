@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour {
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerStay(Collider other)
 	{
 		if(other.gameObject.tag == "Player")
 			FindObjectOfType<Ai>().currentFloorToPatrol = this.gameObject;
