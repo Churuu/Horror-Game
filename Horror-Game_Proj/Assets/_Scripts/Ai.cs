@@ -5,6 +5,9 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+/* This script controls the AI and how it will react in different situations */
+
+ 
 public class Ai : MonoBehaviour
 {
 
@@ -16,7 +19,12 @@ public class Ai : MonoBehaviour
     [Range(100, 180)]
     public int fieldOfViewAngle;
     public bool playerIsVisible = false;
+    [HideInInspector]
     public GameObject currentFloorToPatrol;
+    [Range(1, 10)]
+    public float chasingSpeed;
+    [Range(1, 10)]
+    public float walkingSpeed;
 
     private NavMeshAgent agent;
     private GameObject[] rooms;
@@ -41,6 +49,7 @@ public class Ai : MonoBehaviour
 
         StartCoroutine(AI());
         CheckIfPlayerVisible();
+        Debug.Log(player.GetComponent<Rigidbody>().velocity);
 
         switch (state)
         {
@@ -67,6 +76,7 @@ public class Ai : MonoBehaviour
             if(state == AiState.chasePlayer)
             {
                 yield return new WaitForSeconds(10);
+                agent.speed = walkingSpeed;
                 state = AiState.patrolRoom;
             }
                 
@@ -77,13 +87,11 @@ public class Ai : MonoBehaviour
     {
         playerIsVisible = false;
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
-        Debug.DrawRay(transform.position, dirToTarget);
         if(Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit))
             {
-                Debug.Log(hit.collider.gameObject);
                 if(hit.collider.tag == "Player") 
                 {
                     playerIsVisible = true;
@@ -96,6 +104,7 @@ public class Ai : MonoBehaviour
     void ChasePlayer()
     {
         CancelInvoke();
+        agent.speed = chasingSpeed;
         agent.SetDestination(PlayerLastSighting);
     }
 
@@ -193,14 +202,18 @@ public class Ai : MonoBehaviour
 
     void AISound() 
     {
-        if(Input.GetKey(KeyCode.LeftShift))
-            PlayerLastSighting = player.transform.position;
+        // Play AI sound
     }
 
     void OnTriggerStay(Collider other) 
     {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
         if(other.gameObject.tag == "Player")
-            if(player.GetComponent<Rigidbody>().velocity.x > 0 || player.GetComponent<Rigidbody>().velocity.z > 0)
+            if(h != 0 || v != 0)
+            {
                 PlayerLastSighting = player.transform.position;
+                playerIsVisible = true;
+            }
     }
 }
