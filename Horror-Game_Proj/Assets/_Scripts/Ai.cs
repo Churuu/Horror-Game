@@ -49,7 +49,6 @@ public class Ai : MonoBehaviour
 
         StartCoroutine(AI());
         CheckIfPlayerVisible();
-        Debug.Log(player.GetComponent<Rigidbody>().velocity);
 
         switch (state)
         {
