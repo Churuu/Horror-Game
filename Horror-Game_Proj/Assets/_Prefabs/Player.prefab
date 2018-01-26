@@ -57,6 +57,8 @@ GameObject:
   - component: {fileID: 54277131013131816}
   - component: {fileID: 82535419427773814}
   - component: {fileID: 114273810788319690}
+  - component: {fileID: 114359492137409178}
+  - component: {fileID: 114260299437004892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -233,6 +235,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -268,6 +271,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -599,6 +603,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114260299437004892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368503763632586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a841a411f07f040b2d864e0d1bbd60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114273810788319690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,7 +628,17 @@ MonoBehaviour:
   distance: 5
   rayDistance: 5
   playerCam: {fileID: 4489517326393346}
-  throwForce: 400
+--- !u!114 &114359492137409178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368503763632586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bacb84988912d34e90cb7ba904eb6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114949525269151206
 MonoBehaviour:
   m_ObjectHideFlags: 1

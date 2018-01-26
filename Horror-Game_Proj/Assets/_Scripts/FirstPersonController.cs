@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool crouching;
         private float OriginalWalkspeed;
         private float OriginalRunspeed;
-		private List<GameObject> playerInventory = new List<GameObject>();
+
 
         // Use this for initialization
         private void Start()
@@ -78,8 +78,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //    m_Jump = Input.GetButtonDown("Jump");
             //}
 
-            PickObject();
-            OpenDoor();
             
             
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -314,39 +312,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
-        }
-
-        private void PickObject() 
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1))
-            {
-                if(hit.collider.tag == "ObjectiveItem")
-                {
-                    if(Input.GetButtonDown("Interaction"))
-                    {
-						playerInventory.Add (hit.collider.gameObject);
-                        hit.collider.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        private void OpenDoor() 
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1))
-            {
-                if(hit.collider.tag == "Door")
-                {
-                    if(Input.GetButtonDown("Interaction"))
-                    {
-						if(playerInventory.Contains(hit.collider.GetComponent<Door>().keyToOpen))
-                        {
-                            hit.collider.gameObject.SetActive(false);
-                        }      
-                    }
-                }
-            }
         }
     }
 }

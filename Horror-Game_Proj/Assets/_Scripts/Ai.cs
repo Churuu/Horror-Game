@@ -27,7 +27,6 @@ public class Ai : MonoBehaviour
     public float walkingSpeed;
 
     private NavMeshAgent agent;
-    private GameObject[] rooms;
     private GameObject room;
     private Vector3 PlayerLastSighting;
     private Vector3 AiDestination;
@@ -41,7 +40,6 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rooms = GameObject.FindGameObjectsWithTag("Room");
     }
 
     void Update()
