@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -45,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool crouching;
         private float OriginalWalkspeed;
         private float OriginalRunspeed;
-        
+
 
         // Use this for initialization
         private void Start()
@@ -76,6 +77,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //{
             //    m_Jump = Input.GetButtonDown("Jump");
             //}
+
             
             
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)

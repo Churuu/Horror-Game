@@ -9,10 +9,10 @@ public class Room : MonoBehaviour
     {
 
         Gizmos.color = new Color(0f, 1f, 0f);
-        Gizmos.DrawWireCube(GetComponent<BoxCollider>().transform.localPosition, GetComponent<BoxCollider>().transform.localScale);
+        Gizmos.DrawWireCube(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.size);
 
         Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
-        Gizmos.DrawCube(GetComponent<BoxCollider>().transform.localPosition, GetComponent<BoxCollider>().transform.localScale);
+        Gizmos.DrawCube(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.size);
 
     }
 }

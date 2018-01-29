@@ -5,6 +5,9 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+/* This script controls the AI and how it will react in different situations */
+
+ 
 public class Ai : MonoBehaviour
 {
 
@@ -18,9 +21,12 @@ public class Ai : MonoBehaviour
     public bool playerIsVisible = false;
     [HideInInspector]
     public GameObject currentFloorToPatrol;
+    [Range(1, 10)]
+    public float chasingSpeed;
+    [Range(1, 10)]
+    public float walkingSpeed;
 
     private NavMeshAgent agent;
-    private GameObject[] rooms;
     private GameObject room;
     private Vector3 PlayerLastSighting;
     private Vector3 AiDestination;
@@ -34,7 +40,6 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rooms = GameObject.FindGameObjectsWithTag("Room");
     }
 
     void Update()
@@ -68,6 +73,7 @@ public class Ai : MonoBehaviour
             if(state == AiState.chasePlayer)
             {
                 yield return new WaitForSeconds(10);
+                agent.speed = walkingSpeed;
                 state = AiState.patrolRoom;
             }
                 
@@ -80,7 +86,7 @@ public class Ai : MonoBehaviour
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
         if(Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
         {
-            RaycastHit hit; 
+            RaycastHit hit;
             if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit))
             {
                 if(hit.collider.tag == "Player") 
@@ -95,6 +101,7 @@ public class Ai : MonoBehaviour
     void ChasePlayer()
     {
         CancelInvoke();
+        agent.speed = chasingSpeed;
         agent.SetDestination(PlayerLastSighting);
     }
 
@@ -102,20 +109,14 @@ public class Ai : MonoBehaviour
     {
         if (!patrollingRoom)
         {
-            room = rooms[UnityEngine.Random.Range(0, rooms.Length)];
-            if(currentFloorToPatrol.GetComponent<Collider>().bounds.Contains(room.transform.position))
+            room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
+            AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
+            if (!Physics.CheckSphere(AiDestination, 0.5f))
             {
-                AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
-                if (!Physics.CheckSphere(AiDestination, 0.5f))
-                {
-                    agent.SetDestination(AiDestination);
-                    patrollingRoom = true;
-                }
+                agent.SetDestination(AiDestination);
+                patrollingRoom = true;
             }
-            else
-            {
-                Debug.LogError("Det finns inga våningar för AI'n att patrullera! Öppna AI managern och lägg till floors");
-            }
+            
         }
 
 
@@ -198,16 +199,18 @@ public class Ai : MonoBehaviour
 
     void AISound() 
     {
-        if(Input.GetKey(KeyCode.LeftShift))
-            PlayerLastSighting = player.transform.position;
+        // Play AI sound
     }
 
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerStay(Collider other) 
     {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
         if(other.gameObject.tag == "Player")
-        {
-            if(player.GetComponent<Rigidbody>().velocity.x > 0 && player.GetComponent<Rigidbody>().velocity.z > 0)
+            if(h != 0 || v != 0)
+            {
                 PlayerLastSighting = player.transform.position;
-        }
+                playerIsVisible = true;
+            }
     }
 }

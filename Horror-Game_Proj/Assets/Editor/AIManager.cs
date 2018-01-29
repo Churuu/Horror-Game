@@ -44,12 +44,7 @@ public class AIManager : EditorWindow {
 
         if (GUILayout.Button("Add Floor"))
         {
-            GameObject parent = GameObject.Find("Floors");
-            if (parent == null)
-            {
-                parent = new GameObject("Floors");
-            }
-            Instantiate(Floor, parent.transform);
+            Instantiate(Floor);
         }
     }
 }
