@@ -41,11 +41,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        public bool Flashlight = false;
-        public GameObject Mobillampa;
+        public bool flashlight = false;
+        public GameObject mobillampa;
         public bool crouching;
-        private float OriginalWalkspeed;
-        private float OriginalRunspeed;
+        private float originalWalkspeed;
+        private float originalRunspeed;
 
 
         // Use this for initialization
@@ -61,8 +61,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-            OriginalRunspeed = m_RunSpeed;
-            OriginalWalkspeed = m_WalkSpeed;
+            originalRunspeed = m_RunSpeed;
+            originalWalkspeed = m_WalkSpeed;
 
         }
 
@@ -71,14 +71,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
             RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            
-            //if (!m_Jump)
-            //{
-            //    m_Jump = Input.GetButtonDown("Jump");
-            //}
-
-            
+            Flashlight();
+            Crouch();
             
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -91,36 +85,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir.y = 0f;
             }
-            //Ficklampa Delen ;)
-            if (Input.GetKeyDown(KeyCode.Q) && Flashlight == false)
-            {
-                Flashlight = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) && Flashlight == true)
-            {
-                Flashlight = false;
-            }
 
-            if (Flashlight == true)
-            {
-                Mobillampa.GetComponent<Light>().enabled = true;
-            }
-            if (Flashlight == false)
-            {
-                Mobillampa.GetComponent<Light>().enabled = false;
-            }
 
+
+
+            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+        }
+
+        private void Crouch() 
+        {
             //Bend thoes Knees! XD
             if (Input.GetKeyDown(KeyCode.C))
             {
                 if (crouching)
-                {
                     crouching = false;
-                }
                 else
-                {
                     crouching = true;
-                }
             }
 
             if (crouching)
@@ -128,18 +108,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_CharacterController.height = 1.0f;
                 m_WalkSpeed = 2;
                 m_RunSpeed = 2;
-
             }
             else
             {
                 m_CharacterController.height = 1.8f;
-                m_WalkSpeed = OriginalWalkspeed;
-                m_RunSpeed = OriginalRunspeed;
+                m_WalkSpeed = originalWalkspeed;
+                m_RunSpeed = originalRunspeed;
             }
-
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
+
+        private void Flashlight()
+        {
+            if(Input.GetButtonDown("Flashlight"))
+                flashlight = !flashlight;
+            
+            if(flashlight)
+                mobillampa.GetComponent<Light>().enabled = true;
+            else
+                mobillampa.GetComponent<Light>().enabled = false;
+            
+        }
 
         private void PlayLandingSound()
         {
