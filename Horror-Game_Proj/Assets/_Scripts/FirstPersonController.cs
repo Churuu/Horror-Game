@@ -95,13 +95,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Crouch() 
         {
             //Bend thoes Knees! XD
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                if (crouching)
-                    crouching = false;
-                else
-                    crouching = true;
-            }
+            if (Input.GetButtonDown("Crouching"))
+                crouching = !crouching;
 
             if (crouching)
             {
