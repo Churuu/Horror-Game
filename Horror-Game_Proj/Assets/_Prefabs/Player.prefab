@@ -126,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368503763632586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.394689, y: 1.8895618, z: 7.4890914}
+  m_LocalPosition: {x: -8.687073, y: 3.83, z: 15.919901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4489517326393346}
@@ -169,13 +169,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106515097614414}
-  m_LocalRotation: {x: 0.13052598, y: -0, z: -0, w: 0.99144495}
+  m_LocalRotation: {x: -0.022313284, y: -0, z: -0, w: 0.9997511}
   m_LocalPosition: {x: -0.017, y: 0.245, z: 0.28}
   m_LocalScale: {x: 7.6532655, y: 30.372711, z: 5.3818154}
   m_Children: []
   m_Father: {fileID: 4502555801021314}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15.000001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.5570002, y: 0, z: 0}
 --- !u!4 &4617039889823750
 Transform:
   m_ObjectHideFlags: 1
@@ -233,6 +233,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -268,6 +269,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -561,9 +563,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.3
-  m_Range: 20
-  m_SpotAngle: 89.66
+  m_Intensity: 1.45
+  m_Range: 11.052749
+  m_SpotAngle: 62.586853
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -610,12 +612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f43a3f824f03f4abb9170bb8d72131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1486858234524308}
   distance: 5
   rayDistance: 5
   playerCam: {fileID: 4489517326393346}
-  throwForce: 400
-  Phone: {fileID: 1960174865511168}
 --- !u!114 &114949525269151206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,8 +627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 2
+  m_RunSpeed: 5
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -712,17 +711,17 @@ MonoBehaviour:
   m_JumpBob:
     BobDuration: 0.2
     BobAmount: 0.1
-  m_StepInterval: 5
+  m_StepInterval: 8
   m_FootstepSounds:
   - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
-  Flashlight: 0
-  Mobillampa: {fileID: 1106515097614414}
+  flashlight: 0
+  mobillampa: {fileID: 0}
   crouching: 0
-  Stamina: 10
-  IsTired: 0
+  stamina: 10
+  playerTired: 0
 --- !u!124 &124428478162871730
 Behaviour:
   m_ObjectHideFlags: 1
