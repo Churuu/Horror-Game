@@ -17,7 +17,8 @@ public class PlayerInteractionsInformation : MonoBehaviour {
 	private void ShowInformationOnScreenIneractions()
     {
 		interaction.SetActive(false);
-
+		interactionText.text = "";
+		
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2))
         {
