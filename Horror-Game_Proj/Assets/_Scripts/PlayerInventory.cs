@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour {
 
-	private List<GameObject> playerInventory = new List<GameObject>();
+    [HideInInspector]
+	public List<GameObject> playerInventory = new List<GameObject>();
 
 	void Update()
 	{

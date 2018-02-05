@@ -4,15 +4,16 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class BinarySaveSystem : MonoBehaviour {
+public class BinarySaveSystem {
 
-	Vector3 playerPos;
-	Vector3 aiPos;
-	Ai.AiState aiState;
-	List<GameObject> _playerInv = new List<GameObject>();
+	public static float x,y,z;
+	public static float rx,ry,rz;
 
-	
-	public void Save()
+	//ai info
+	public static float _x,_y,_z;
+	public static float _rx, _ry, _rz;
+
+	public static void Save()
 	{
 		string destination = Application.persistentDataPath + "/save.dat";
 		FileStream file;
@@ -22,14 +23,14 @@ public class BinarySaveSystem : MonoBehaviour {
 		else
 			file = File.Create(destination);
 
-		Gamedata data = new Gamedata(playerPos, aiPos, aiState, _playerInv);
 		BinaryFormatter bf = new BinaryFormatter();
+		Gamedata data = new Gamedata(x, y, z, rx, ry, rz, _x, _y, _z, _rx, _ry, _rz);
 		bf.Serialize(file, data);
 		file.Close();
 	}
 
 
-	public void Load()
+	public static void Load()
 	{
 		string destination = Application.persistentDataPath + "/save.dat";
 		FileStream file;
@@ -42,10 +43,5 @@ public class BinarySaveSystem : MonoBehaviour {
 		BinaryFormatter bf =  new BinaryFormatter();
 		Gamedata data = (Gamedata) bf.Deserialize(file);
 		file.Close();
-
-		playerPos = data.playerPos;
-		aiPos = data.playerPos;
-		aiState = data.aiState;
-		_playerInv = data._playerInv;
 	}
 }

@@ -213,4 +213,12 @@ public class Ai : MonoBehaviour
                 playerIsVisible = true;
             }
     }
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            //Player Dead
+
+        }
+    }
 }
