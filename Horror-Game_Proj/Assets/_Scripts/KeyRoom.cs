@@ -19,6 +19,7 @@ public class KeyRoom : MonoBehaviour
     public void AddKeyPoint()
     {
         GameObject point = new GameObject("Point");
+        point.transform.parent = gameObject.transform;
         aiToPatrolPoint.Add(point.transform);
     }
 
