@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyRoom : MonoBehaviour
 {
 
-    public Transform[] aiToPatrolPoint;
+    List<Transform> aiToPatrolPoint = new List<Transform>();
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,6 +14,13 @@ public class KeyRoom : MonoBehaviour
             FindObjectOfType<Ai>().switchAiPatrolPoint(aiToPatrolPoint);
 
         }
+    }
+
+    public void AddKeyPoint()
+    {
+        GameObject keyPoint = new GameObject("Point");
+        keyPoint.transform.parent = this.gameObject.transform;
+        aiToPatrolPoint.Add(keyPoint);
     }
 
     void OnDrawGizmos()

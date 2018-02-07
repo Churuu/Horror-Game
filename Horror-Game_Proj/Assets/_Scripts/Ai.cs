@@ -13,7 +13,7 @@ public class Ai : MonoBehaviour
 
     // Script that controls the AI
     [HideInInspector]
-    public Transform[] aiPointToPatrol;
+    public List<Transform> aiPointToPatrol;
     public GameObject player;
     public AiState state;
     [Range(100, 180)]
@@ -137,7 +137,7 @@ public class Ai : MonoBehaviour
     }
 
 
-    public void PatrolKeyPoint(Transform[] points)
+    public void PatrolKeyPoint(List<Transform> points)
     {
         agent.SetDestination(points[patrollingPoint].position);
 
@@ -157,7 +157,7 @@ public class Ai : MonoBehaviour
 
     void MoveToNextPoint()
     {
-        if (patrollingPoint == aiPointToPatrol.Length - 1)
+        if (patrollingPoint == aiPointToPatrol.Count - 1)
         {
             state = AiState.wait;
             ResetPatrolPoints();
@@ -181,7 +181,7 @@ public class Ai : MonoBehaviour
         if (state != AiState.chasePlayer)
         {
             System.Random rnd = new System.Random();
-            Transform[] ScrambledPatrolPoints = aiPointToPatrol.OrderBy(x => rnd.Next()).ToArray();
+            List<Transform> ScrambledPatrolPoints = aiPointToPatrol.OrderBy(x => rnd.Next()).ToList();
 
             this.aiPointToPatrol = ScrambledPatrolPoints;
             patrollingPoint = 0;

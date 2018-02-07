@@ -22,24 +22,12 @@ public class AIManager : EditorWindow {
     {
         if (GUILayout.Button("Add Room"))
         {
-            
-            GameObject parent = GameObject.Find("Rooms");
-
-            if (parent == null)
-            {
-                parent = new GameObject("Rooms");
-            }
-            Instantiate(room, parent.transform);
+            Instantiate(room);
         }
 
         if (GUILayout.Button("Add Key Room"))
         {
-            GameObject parent = GameObject.Find("Rooms");
-            if (parent == null)
-            {
-                parent = new GameObject("Rooms");
-            }
-            Instantiate(KeyRoom, parent.transform);
+            Instantiate(KeyRoom);
         }
 
         if (GUILayout.Button("Add Floor"))
