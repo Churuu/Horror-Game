@@ -16,5 +16,10 @@ public class KeyRoomInspector : Editor
 		{
 			keyRoom.AddKeyPoint();
 		}
+
+		if(GUILayout.Button("Remove Keypoint"))
+		{
+			keyRoom.RemoveKeypoint();
+		}
 	}
 }
