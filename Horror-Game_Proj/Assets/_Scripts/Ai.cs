@@ -25,10 +25,12 @@ public class Ai : MonoBehaviour
     public float chasingSpeed;
     [Range(1, 10)]
     public float walkingSpeed;
+    [HideInInspector]
+    public NavMeshAgent agent;
+    [HideInInspector]
+    public Vector3 PlayerLastSighting;
 
-    private NavMeshAgent agent;
     private GameObject room;
-    private Vector3 PlayerLastSighting;
     private Vector3 AiDestination;
     private int patrollingPoint = 0;
     private bool arrived = false;
