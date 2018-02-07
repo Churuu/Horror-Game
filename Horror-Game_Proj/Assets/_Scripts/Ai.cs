@@ -176,7 +176,7 @@ public class Ai : MonoBehaviour
     }
 
 
-    public void switchAiPatrolPoint(Transform[] aiPointToPatrol)
+    public void switchAiPatrolPoint(List<Transform> aiPointToPatrol)
     {
         if (state != AiState.chasePlayer)
         {
