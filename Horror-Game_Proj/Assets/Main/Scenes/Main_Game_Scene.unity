@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.05, g: 0.05, b: 0.05, a: 1}
-  m_AmbientEquatorColor: {r: 0.050980397, g: 0.050980397, b: 0.050980397, a: 1}
+  m_AmbientSkyColor: {r: 0.19852942, g: 0.19852942, b: 0.19852942, a: 1}
+  m_AmbientEquatorColor: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
@@ -1707,8 +1707,8 @@ Transform:
   m_LocalScale: {x: 33.001842, y: 3.3306468, z: 45.035336}
   m_Children:
   - {fileID: 576665107}
-  m_Father: {fileID: 740507606}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &97257255
 Prefab:
@@ -3036,8 +3036,8 @@ Transform:
   - {fileID: 846544920}
   - {fileID: 252220115}
   - {fileID: 693008053}
-  m_Father: {fileID: 740507606}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &158447706
 MonoBehaviour:
@@ -8032,7 +8032,7 @@ GameObject:
   - component: {fileID: 576665108}
   m_Layer: 2
   m_Name: Room(Clone)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10704,13 +10704,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 95126392}
-  - {fileID: 2005628151}
-  - {fileID: 158447705}
-  - {fileID: 1582144608}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745117803
 GameObject:
@@ -17146,7 +17142,7 @@ Transform:
   m_GameObject: {fileID: 1300797518}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: -851.23, y: 148.93001, z: 3.3100128}
-  m_LocalScale: {x: 36.175674, y: 21.195938, z: 234.42975}
+  m_LocalScale: {x: 65.427246, y: 21.195938, z: 234.42975}
   m_Children: []
   m_Father: {fileID: 1857834409}
   m_RootOrder: 1
@@ -22090,8 +22086,8 @@ Transform:
   - {fileID: 2000919530}
   - {fileID: 417501834}
   - {fileID: 1082117247}
-  m_Father: {fileID: 740507606}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1582144609
 MonoBehaviour:
@@ -27987,8 +27983,8 @@ Transform:
   - {fileID: 708346677}
   - {fileID: 1516810107}
   - {fileID: 1303787418}
-  m_Father: {fileID: 740507606}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005628152
 MonoBehaviour:
