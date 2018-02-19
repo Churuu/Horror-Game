@@ -27,7 +27,6 @@ public class QuickSaveSystem : MonoBehaviour
 		aiPos = ai.transform.position;
 		aiRot = ai.transform.eulerAngles;
 		inventory = _inv.playerInventory;
-		print(playerRot);
 	}
 
 	public void Load()

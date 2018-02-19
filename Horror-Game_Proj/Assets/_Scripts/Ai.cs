@@ -14,12 +14,12 @@ public class Ai : MonoBehaviour
     // Script that controls the AI
     [HideInInspector]
     public List<Transform> aiPointToPatrol;
-    public GameObject player;
     public AiState state;
+    [HideInInspector]
+    public bool playerIsVisible = false;
     [Range(100, 180)]
     public int fieldOfViewAngle;
-    public bool playerIsVisible = false;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject currentFloorToPatrol;
     [Range(1, 10)]
     public float chasingSpeed;
@@ -30,6 +30,7 @@ public class Ai : MonoBehaviour
     [HideInInspector]
     public Vector3 PlayerLastSighting;
 
+    private GameObject player;
     private GameObject room;
     private Vector3 AiDestination;
     private int patrollingPoint = 0;
@@ -42,6 +43,7 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -198,27 +200,15 @@ public class Ai : MonoBehaviour
 
     }
 
-    void AISound() 
-    {
-        // Play AI sound
-    }
-
-    void OnTriggerStay(Collider other) 
+    void OnTriggerStay(Collider c) 
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        if(other.gameObject.tag == "Player")
+        if(c.gameObject.tag == "Player")
             if(h != 0 || v != 0)
             {
                 PlayerLastSighting = player.transform.position;
                 playerIsVisible = true;
             }
-    }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            FindObjectOfType<QuickSaveSystem>().Load();
-        }
     }
 }
