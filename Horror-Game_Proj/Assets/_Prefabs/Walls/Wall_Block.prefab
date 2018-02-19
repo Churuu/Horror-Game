@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4766314810855352}
   - component: {fileID: 33025274624487994}
   - component: {fileID: 23554591686760228}
-  - component: {fileID: 95640954753218056}
   - component: {fileID: 65187753260494932}
   m_Layer: 0
   m_Name: Wall_Block
@@ -180,20 +179,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.77827215, y: 2.8602057, z: 0.82314277}
   m_Center: {x: -0.110863864, y: -0.5363498, z: 1.2277172}
---- !u!95 &95640954753218056
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1001454135291468}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5c54115f5933adc4dab66c6fddd6c6cf, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

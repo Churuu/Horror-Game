@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4672173193709208}
   - component: {fileID: 33836657427637168}
   - component: {fileID: 23014041878527118}
-  - component: {fileID: 95407546793453978}
   m_Layer: 0
   m_Name: box1 (2)
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4153132200903266}
   - component: {fileID: 33319787149962350}
   - component: {fileID: 23916232711616392}
-  - component: {fileID: 95484791184726570}
   - component: {fileID: 65222453240885846}
   m_Layer: 0
   m_Name: box1 (3)
@@ -73,7 +71,6 @@ GameObject:
   - component: {fileID: 4018599658112500}
   - component: {fileID: 33672740114257000}
   - component: {fileID: 23856738699210056}
-  - component: {fileID: 95792059838391624}
   m_Layer: 0
   m_Name: box1 (1)
   m_TagString: Untagged
@@ -329,54 +326,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06303414, y: 0.16688442, z: 0.1201456}
   m_Center: {x: 0, y: -0.056845233, z: 0}
---- !u!95 &95407546793453978
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102741140061124}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a0e1692343e6d8747aaa8bfd8e251d9b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95484791184726570
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1396199232880276}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a0e1692343e6d8747aaa8bfd8e251d9b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95792059838391624
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555964045684402}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a0e1692343e6d8747aaa8bfd8e251d9b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

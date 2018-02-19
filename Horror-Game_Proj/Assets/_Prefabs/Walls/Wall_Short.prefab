@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4512419167778646}
   - component: {fileID: 33132544505402608}
   - component: {fileID: 23601257987107442}
-  - component: {fileID: 95463216025851790}
   - component: {fileID: 65474597595102148}
   m_Layer: 0
   m_Name: Wall_Short
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9999998, y: 209.2591, z: 1.3859638}
   m_Center: {x: 0.4999999, y: 104.62955, z: 0.6929819}
---- !u!95 &95463216025851790
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594167239021442}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 65968e7675736ae4b9004771f7ff50c1, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
