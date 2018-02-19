@@ -219,8 +219,7 @@ public class Ai : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            //Player Dead
-
+            FindObjectOfType<QuickSaveSystem>().Load();
         }
     }
 }

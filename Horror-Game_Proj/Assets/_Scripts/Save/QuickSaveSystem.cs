@@ -17,6 +17,7 @@ public class QuickSaveSystem : MonoBehaviour
 	{
 		_inv = player.GetComponent<PlayerInventory>();
 		DontDestroyOnLoad(this);
+		Save();
 	}
 
 	public void Save()
