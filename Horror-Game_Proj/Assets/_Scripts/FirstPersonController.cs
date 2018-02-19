@@ -40,7 +40,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        public bool flashlight = false;
+        public bool flashlight = true;
         public GameObject mobillampa;
         public bool crouching;
         private float originalWalkspeed;

@@ -19,7 +19,7 @@ public class Ai : MonoBehaviour
     [Range(100, 180)]
     public int fieldOfViewAngle;
     public bool playerIsVisible = false;
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject currentFloorToPatrol;
     [Range(1, 10)]
     public float chasingSpeed;
@@ -118,7 +118,6 @@ public class Ai : MonoBehaviour
                 agent.SetDestination(AiDestination);
                 patrollingRoom = true;
             }
-            
         }
 
 
