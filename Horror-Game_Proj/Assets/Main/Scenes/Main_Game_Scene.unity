@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.21323532, g: 0.21323532, b: 0.21323532, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 1c0a06adf86dac548bc55b44e50819c6, type: 2}
   m_HaloStrength: 0.5
@@ -50,7 +50,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1.05
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -7067,8 +7068,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 25.222343
-  m_SpotAngle: 36.841404
+  m_Range: 16.150478
+  m_SpotAngle: 71.10463
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -9697,6 +9698,7 @@ Mesh:
     firstByte: 0
     indexCount: 96
     topology: 0
+    baseVertex: 0
     firstVertex: 0
     vertexCount: 20
     localAABB:
@@ -9714,6 +9716,7 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
+  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000002000300020001000400020004000500060007000800060008000600060008000800060008000900090008000800090008000900090008000800090008000900090008000800090008000a000a0008000b000a000b000a000c000d000e000f0010000d000f000d000c000f000c0011000f00100010000f0010000f00120013001000120010000f00120006001300120013001200070006000600070006001200070006000600070006000700070006000600070006000700
   m_Skin: []
   m_VertexData:
@@ -14774,9 +14777,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: af4f90118b4926744a4080147c1d5eec, type: 3}
 --- !u!1 &1019872361
@@ -15530,14 +15533,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1080146263}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.66, y: -1.06, z: 19.42}
+  m_LocalRotation: {x: 0, y: -0.9916936, z: 0, w: 0.12862262}
+  m_LocalPosition: {x: -8, y: -1.06, z: 7.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1576331692}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -165.22, z: 0}
 --- !u!1 &1082117246
 GameObject:
   m_ObjectHideFlags: 0
@@ -15774,6 +15777,7 @@ Mesh:
     firstByte: 0
     indexCount: 42
     topology: 0
+    baseVertex: 0
     firstVertex: 0
     vertexCount: 14
     localAABB:
@@ -15791,6 +15795,7 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
+  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000002000300040005000600040006000700070006000100070001000000010000000800010008000900010009000a000a0009000b00000001000c0000000c000d000d000c0005000d0005000400
   m_Skin: []
   m_VertexData:
@@ -18491,6 +18496,7 @@ Mesh:
     firstByte: 0
     indexCount: 12
     topology: 0
+    baseVertex: 0
     firstVertex: 0
     vertexCount: 6
     localAABB:
@@ -18508,6 +18514,7 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
+  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000002000300020001000400020004000500
   m_Skin: []
   m_VertexData:
@@ -18547,7 +18554,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 240
-    _typelessdata: fdffffbe000000bf0bef853d6461d33300000000000080bf4903413fb641423f4903413fb641423f000000bf9affb2be0bef853d6461d33300000000000080bf4903413fc18a4b3f4903413fc18a4b3f0000003f3871063d18ef853d6461d33300000000000080bf2dff7f3f3927633f2dff7f3f3927633f0000003f000000bf18ef853d6461d33300000000000080bf2dff7f3fb641423f2dff7f3fb641423f000000bf0000003f0bef853d6461d33300000000000080bf4903413f2cff7f3f4903413f2cff7f3f0000003f0000003f18ef853d6461d33300000000000080bf2dff7f3f2cff7f3f2dff7f3f2cff7f3f
+    _typelessdata: fdffffbe000000bf0bef853d6461d33300000000000080bf4903413fb641423f4903413fb641423f000000bf98ffb2be0bef853d6461d33300000000000080bf4903413fc18a4b3f4903413fc18a4b3f0000003f4871063d18ef853d6461d33300000000000080bf2dff7f3f3927633f2dff7f3f3927633f0000003fffffffbe18ef853d6461d33300000000000080bf2dff7f3fb641423f2dff7f3fb641423f000000bf0000003f0bef853d6461d33300000000000080bf4903413f2cff7f3f4903413f2cff7f3f0000003f0000003f18ef853d6461d33300000000000080bf2dff7f3f2cff7f3f2dff7f3f2cff7f3f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -21975,6 +21982,7 @@ Mesh:
     firstByte: 0
     indexCount: 12
     topology: 0
+    baseVertex: 0
     firstVertex: 0
     vertexCount: 5
     localAABB:
@@ -21992,6 +22000,7 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
+  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000002000000030004000100030001000000
   m_Skin: []
   m_VertexData:
@@ -22807,6 +22816,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -23419,8 +23429,8 @@ Light:
   m_Type: 0
   m_Color: {r: 0.36656576, g: 0.50425965, b: 0.8308824, a: 1}
   m_Intensity: 1.55
-  m_Range: 40.051075
-  m_SpotAngle: 80.03778
+  m_Range: 182.8
+  m_SpotAngle: 73.65001
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -27135,9 +27145,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 388177b23bc15bc40867d934126ad99e, type: 3}
 --- !u!4 &1857834409 stripped
