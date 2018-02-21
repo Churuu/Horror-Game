@@ -40,7 +40,8 @@ public class PlayerInventory : MonoBehaviour {
                 {
 					if(playerInventory.Contains(hit.collider.GetComponent<Door>().keyToOpen))
                     {
-                            hit.collider.gameObject.SetActive(false);
+                        hit.collider.gameObject.SetActive(false);
+                        FindObjectOfType<NavMeshBaker>().BuildSurface();
                     }      
                 }
             }

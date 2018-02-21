@@ -132,7 +132,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (crouching)
             {
-                m_CharacterController.height = 1.0f;
+                m_CharacterController.height = 1f;
                 m_WalkSpeed = 2;
                 m_RunSpeed = 2;
             }
@@ -326,6 +326,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        private void OnTriggerEnter(Collider c)
+        {
+            if(c.transform.tag == "Ai")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }

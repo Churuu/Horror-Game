@@ -115,10 +115,12 @@ public class Ai : MonoBehaviour
         {
             room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
-            if (!Physics.CheckSphere(AiDestination, 0.5f))
+            if (!Physics.CheckSphere(AiDestination, 0.5f) && agent.pathStatus == NavMeshPathStatus.PathComplete)
             {
                 agent.SetDestination(AiDestination);
                 patrollingRoom = true;
+            }else{
+                Debug.LogWarning("The AI had trouble reaching its destination, make sure it has a clear path to the target");
             }
         }
 
