@@ -110,6 +110,10 @@ public class Ai : MonoBehaviour
                 }
             }
         }
+
+        if(Vector3.Distance(transform.position, player.transform.position) <= 5)
+            playerIsVisible = true;
+
     }
 
     void ChasePlayer()

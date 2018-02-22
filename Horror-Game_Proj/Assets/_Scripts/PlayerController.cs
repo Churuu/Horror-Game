@@ -127,4 +127,10 @@ public class PlayerController : MonoBehaviour {
             else
                 cellphone.GetComponent<Light>().enabled = false;
         }
+
+	void onCollisionEnter(Collision other)
+	{
+		if(other.gameObject.tag == "Ai")
+			FindObjectOfType<QuickSaveSystem>().Load();
+	}
 }
