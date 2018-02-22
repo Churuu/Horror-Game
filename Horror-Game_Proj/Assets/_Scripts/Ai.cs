@@ -111,7 +111,7 @@ public class Ai : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= 5)
+        if(Vector3.Distance(transform.position, player.transform.position) <= 3)
             playerIsVisible = true;
 
     }
