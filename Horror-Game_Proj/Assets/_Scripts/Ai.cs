@@ -87,17 +87,27 @@ public class Ai : MonoBehaviour
     void CheckIfPlayerVisible()
     {
         playerIsVisible = false;
+        float maxViewDistance;
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
+
+
+        var pC = FindObjectOfType<PlayerController>();
+        if(pC.flashlight || pC.crouching)
+            maxViewDistance = 10;
+        else
+            maxViewDistance = 5;
+
+
         if(Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit))
+            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, maxViewDistance))
             {
                 if(hit.collider.tag == "Player") 
                 {
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
-                } 
+                }
             }
         }
     }
@@ -200,17 +210,5 @@ public class Ai : MonoBehaviour
             size.z * (UnityEngine.Random.value - .5f));
         return center + rndP;
 
-    }
-
-    void OnTriggerStay(Collider c) 
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        if(c.gameObject.tag == "Player")
-            if(h != 0 || v != 0)
-            {
-                PlayerLastSighting = player.transform.position;
-                playerIsVisible = true;
-            }
     }
 }

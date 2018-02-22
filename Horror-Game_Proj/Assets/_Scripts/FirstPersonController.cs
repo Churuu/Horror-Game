@@ -40,19 +40,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        public bool flashlight = true;
-        public GameObject mobillampa;
-        public bool crouching;
-        private float originalWalkspeed;
-        private float originalRunspeed;
 
-        public float stamina = 10.0f;
-        private float maxStamina = 10.0f;
-        private float staminaRegenTimer = 0.0f;
-        private const float staminaDecreasePerFrame = 1.0f;
-        private const float staminaIncreasePerFrame = 3.0f;
-        private const float staminaTimeToRegen = 3.0f;
-        public bool playerTired = false;
+
+
 
         // Use this for initialization
         private void Start()
@@ -67,8 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-            originalRunspeed = m_RunSpeed;
-            originalWalkspeed = m_WalkSpeed;
+
             
 
         }
@@ -78,8 +67,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void Update()
         {
             RotateView();
-            Flashlight();
-            Crouching();
             
             
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -97,64 +84,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
-        //RUN FOREST RUN!!!
-        private void Stamina()
-        {
-            if (!m_IsWalking)
-            {
-                stamina = Mathf.Clamp(stamina - (staminaDecreasePerFrame * Time.deltaTime), 0.0f, maxStamina);
-                staminaRegenTimer = 0.0f;
-            }
-            else if (stamina < maxStamina)
-            {
-                if (staminaRegenTimer >= staminaTimeToRegen)
-                    stamina = Mathf.Clamp(stamina + (staminaIncreasePerFrame * Time.deltaTime), 0.0f, maxStamina);
-                else
-                    staminaRegenTimer += Time.deltaTime;
-            }
-                if (stamina <= 0)
-                    playerTired = true;
-                else if (stamina > 0)
-                    playerTired = false;
-
-            if (playerTired)
-                m_RunSpeed = 5;
-            else
-                m_RunSpeed = originalRunspeed;
-
-        }
-
-        private void Crouching()
-        {
-            if (Input.GetButtonDown("Crouching"))
-                crouching = !crouching;
-
-            if (crouching)
-            {
-                m_CharacterController.height = 1f;
-                m_WalkSpeed = 2;
-                m_RunSpeed = 2;
-            }
-            else if (!crouching && !playerTired)
-            {
-                m_CharacterController.height = 1.8f;
-                m_WalkSpeed = originalWalkspeed;
-                m_RunSpeed = originalRunspeed;
-            }
-        }
-
-        private void Flashlight()
-        {
-            if(Input.GetButtonDown("Flashlight"))
-                flashlight = !flashlight;
-
-            if(flashlight)
-                mobillampa.GetComponent<Light>().enabled = true;
-            else
-                mobillampa.GetComponent<Light>().enabled = false;
-        }
-
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
