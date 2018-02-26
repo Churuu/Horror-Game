@@ -12,23 +12,16 @@ public class Ai : MonoBehaviour
 {
 
     // Script that controls the AI
-    [HideInInspector]
-    public List<Transform> aiPointToPatrol;
+    [HideInInspector] public List<Transform> aiPointToPatrol;
     public AiState state;
-    [HideInInspector]
-    public bool playerIsVisible = false;
-    [Range(100, 180)]
-    public int fieldOfViewAngle;
-    [HideInInspector]
-    public GameObject currentFloorToPatrol;
-    [Range(1, 10)]
-    public float chasingSpeed;
-    [Range(1, 10)]
-    public float walkingSpeed;
-    [HideInInspector]
-    public NavMeshAgent agent;
-    [HideInInspector]
-    public Vector3 PlayerLastSighting;
+    [HideInInspector] public bool playerIsVisible = false;
+    [Range(100, 180)] public int fieldOfViewAngle;
+    [HideInInspector] public GameObject currentFloorToPatrol;
+    [Range(1, 10)] public float chasingSpeed;
+    [Range(1, 10)] public float walkingSpeed;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Vector3 PlayerLastSighting;
+    [HideInInspector] public bool playerHiding = false;
 
     private GameObject player;
     private GameObject room;
@@ -103,7 +96,7 @@ public class Ai : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, maxViewDistance))
             {
-                if(hit.collider.tag == "Player") 
+                if(hit.collider.tag == "Player" && !playerHiding) 
                 {
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
@@ -111,13 +104,12 @@ public class Ai : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= 5)
+        if(Vector3.Distance(transform.position, player.transform.position) <= 5 && !playerHiding)
         {
             playerIsVisible = true;
             PlayerLastSighting = player.transform.position;
 
         }
-        print(Vector3.Distance(transform.position, player.transform.position));
     }
 
     void ChasePlayer()
@@ -133,21 +125,33 @@ public class Ai : MonoBehaviour
         {
             room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
-            if (!Physics.CheckSphere(AiDestination, 0.5f) && agent.pathStatus == NavMeshPathStatus.PathComplete)
+            if (!Physics.CheckSphere(AiDestination, 0.3f))
             {
                 agent.SetDestination(AiDestination);
-                patrollingRoom = true;
-            }else{
-                Debug.LogWarning("The AI had trouble reaching its destination, make sure it has a clear path to the target");
+                agent.isStopped = true;
+
+                if(!agent.pathPending)
+                {
+                    if(agent.pathStatus != NavMeshPathStatus.PathInvalid)
+                    {
+                        agent.isStopped = false;
+                        patrollingRoom = true;
+                    }
+                }
             }
         }
 
+            if (!agent.pathPending)
+            {
+                if (agent.remainingDistance <= 0.5f)
+                    Invoke("ResetRoomPatrol", 5);
+            }
+    }
 
-        if (!agent.pathPending)
-        {
-            if (agent.remainingDistance <= 0.5f)
-                Invoke("ResetRoomPatrol", 5);
-        }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0f, 0, 1f);
+        Gizmos.DrawSphere(AiDestination, 0.3f);
     }
 
 

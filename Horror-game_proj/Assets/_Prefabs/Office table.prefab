@@ -24,12 +24,14 @@ GameObject:
   - component: {fileID: 65578966007321168}
   - component: {fileID: 65243579071925336}
   - component: {fileID: 65889164629257078}
+  - component: {fileID: 65327492699559036}
+  - component: {fileID: 114783412862913370}
   m_Layer: 0
   m_Name: Office table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4177772422650348
 Transform:
@@ -37,8 +39,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555342239035688}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 64.79, y: -2.0107107, z: 13.05}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -16.557003, y: 0, z: -20.565958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,6 +99,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1008995, y: 1.1463035, z: 0.42368126}
   m_Center: {x: -0.42782927, y: 0.57315177, z: -0.06304741}
+--- !u!65 &65327492699559036
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555342239035688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.924428, y: 1.1463035, z: 1.2730255}
+  m_Center: {x: -0.43957376, y: 0.57315177, z: -0.91534996}
 --- !u!65 &65578966007321168
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -121,3 +135,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1008995, y: 0.15255618, z: 2.188284}
   m_Center: {x: -0.42782927, y: 1.0700256, z: -0.94276404}
+--- !u!114 &114783412862913370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555342239035688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4647312f8bf1c214fbfda88e93ef45e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
