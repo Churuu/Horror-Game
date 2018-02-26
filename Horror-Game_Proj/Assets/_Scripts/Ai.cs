@@ -111,9 +111,13 @@ public class Ai : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= 3)
+        if(Vector3.Distance(transform.position, player.transform.position) <= 5)
+        {
             playerIsVisible = true;
+            PlayerLastSighting = player.transform.position;
 
+        }
+        print(Vector3.Distance(transform.position, player.transform.position));
     }
 
     void ChasePlayer()
