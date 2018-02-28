@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour {
 
-    [HideInInspector]
-	public List<GameObject> playerInventory = new List<GameObject>();
+	[HideInInspector] public List<GameObject> playerInventory = new List<GameObject>();
+
 
 	void Update()
 	{
@@ -40,7 +40,10 @@ public class PlayerInventory : MonoBehaviour {
                 {
 					if(playerInventory.Contains(hit.collider.GetComponent<Door>().keyToOpen))
                     {
-                        hit.collider.gameObject.SetActive(false);
+                        if(hit.collider.GetComponent<Door>().useAnimation)
+                            hit.collider.gameObject.GetComponent<Animation>().Play();
+                        else
+                            hit.collider.gameObject.SetActive(false);
                     }      
                 }
             }
