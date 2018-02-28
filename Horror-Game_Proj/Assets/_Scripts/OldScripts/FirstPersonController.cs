@@ -9,7 +9,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
+        [SerializeField] public bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
@@ -40,9 +40,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
-
-
+        public bool flashlight = true;
+        public GameObject mobillampa;
+        public bool crouching;
+        private float originalWalkspeed;
+        private float originalRunspeed;
+        public GameObject Mobilephone;
+       
+        public float stamina = 10.0f;
+        private float maxStamina = 10.0f;
+        private float staminaRegenTimer = 0.0f;
+        private const float staminaDecreasePerFrame = 1.0f;
+        private const float staminaIncreasePerFrame = 3.0f;
+        private const float staminaTimeToRegen = 3.0f;
+        public bool playerTired = false;
+        private Transform newAngleRight;
+        private Transform newAngleLeft;
+        private Transform normalAngel;
+        public bool leaningLeft;
+        public bool leaningRight;
+        public bool notLeaning;
 
         // Use this for initialization
         private void Start()
@@ -57,7 +74,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
-
+            originalRunspeed = m_RunSpeed;
+            originalWalkspeed = m_WalkSpeed;
             
 
         }
@@ -67,6 +85,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void Update()
         {
             RotateView();
+            Flashlight();
+            Crouching();
+            Lean();
             
             
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -84,6 +105,126 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
+
+        public void Lean()
+        {
+
+
+            Quaternion newAngleRight = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 30);
+            Quaternion newAngleLeft = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -30);
+
+            Quaternion normalAngel = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+            
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                leaningLeft = true;
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                leaningLeft = false;
+                transform.rotation = Quaternion.Lerp(transform.rotation, normalAngel, Time.deltaTime * 3);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                leaningRight = true;
+            }
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                leaningRight = false;
+            }
+
+            if (transform.rotation.z == 0)
+            {
+                notLeaning = false;
+            }
+            else
+            {
+                notLeaning = true;
+            }
+
+            if (leaningRight)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, newAngleLeft, Time.deltaTime * 3);
+
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, normalAngel, Time.deltaTime * 3);
+
+            }
+            if (leaningLeft)
+            {
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, newAngleRight, Time.deltaTime * 3);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, normalAngel, Time.deltaTime * 3);
+            }
+
+
+        }
+
+        //RUN FOREST RUN!!!
+        private void Stamina()
+        {
+            if (!m_IsWalking)
+            {
+                stamina = Mathf.Clamp(stamina - (staminaDecreasePerFrame * Time.deltaTime), 0.0f, maxStamina);
+                staminaRegenTimer = 0.0f;
+            }
+            else if (stamina < maxStamina)
+            {
+                if (staminaRegenTimer >= staminaTimeToRegen)
+                    stamina = Mathf.Clamp(stamina + (staminaIncreasePerFrame * Time.deltaTime), 0.0f, maxStamina);
+                else
+                    staminaRegenTimer += Time.deltaTime;
+            }
+                if (stamina <= 0)
+                    playerTired = true;
+                else if (stamina > 0)
+                    playerTired = false;
+
+            if (playerTired)
+                m_RunSpeed = 5;
+            else
+                m_RunSpeed = originalRunspeed;
+
+        }
+
+        private void Crouching()
+        {
+            if (Input.GetButtonDown("Crouching"))
+                crouching = !crouching;
+
+            if (crouching)
+            {
+                m_CharacterController.height = 1.0f;
+                m_WalkSpeed = 2;
+                m_RunSpeed = 2;
+            }
+            else if (!crouching && !playerTired)
+            {
+                m_CharacterController.height = 1.8f;
+                m_WalkSpeed = originalWalkspeed;
+                m_RunSpeed = originalRunspeed;
+            }
+        }
+
+        private void Flashlight()
+        {
+            if(Input.GetButtonDown("Flashlight"))
+                flashlight = !flashlight;
+
+            if(flashlight)
+                mobillampa.GetComponent<Light>().enabled = true;
+            else
+                mobillampa.GetComponent<Light>().enabled = false;
+        }
+
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
@@ -186,18 +327,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
             {
-                m_Camera.transform.localPosition =
+                Mobilephone.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
-                newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+                newCameraPosition = Mobilephone.transform.localPosition;
+                newCameraPosition.y = Mobilephone.transform.localPosition.y;
             }
             else
             {
-                newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+                newCameraPosition = Mobilephone.transform.localPosition;
+                newCameraPosition.y = m_OriginalCameraPosition.y;
             }
-            m_Camera.transform.localPosition = newCameraPosition;
+            Mobilephone.transform.localPosition = newCameraPosition;
         }
 
 
@@ -237,7 +378,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            //m_MouseLook.LookRotation (transform, m_Camera.transform);
+
+            float mouseInputX = Input.GetAxis("Mouse X");
+            float mouseInputY = Input.GetAxis("Mouse Y");
+            Vector3 lookhere = new Vector3(-mouseInputY, mouseInputX, 0);
+            transform.Rotate(lookhere);
+            float z = transform.eulerAngles.z;
+            if (!notLeaning)
+            {
+                //transform.eulerAngles = new Vector3(-mouseInputY, mouseInputX, 0);
+                transform.Rotate(0, 0, -z);
+            }
+
+
         }
 
 
@@ -255,14 +409,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
-        }
-
-        private void OnTriggerEnter(Collider c)
-        {
-            if(c.transform.tag == "Ai")
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-            }
         }
     }
 }
