@@ -22,6 +22,7 @@ public class Ai : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Vector3 PlayerLastSighting;
     [HideInInspector] public bool playerHiding = false;
+    public float maxViewDistance; 
 
     private GameObject player;
     private GameObject room;
@@ -80,7 +81,6 @@ public class Ai : MonoBehaviour
     void CheckIfPlayerVisible()
     {
         playerIsVisible = false;
-        float maxViewDistance;
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
 
 
@@ -128,16 +128,7 @@ public class Ai : MonoBehaviour
             if (!Physics.CheckSphere(AiDestination, 0.3f))
             {
                 agent.SetDestination(AiDestination);
-                agent.isStopped = true;
-
-                if(!agent.pathPending)
-                {
-                    if(agent.pathStatus != NavMeshPathStatus.PathInvalid)
-                    {
-                        agent.isStopped = false;
-                        patrollingRoom = true;
-                    }
-                }
+                patrollingRoom = true;
             }
         }
 
