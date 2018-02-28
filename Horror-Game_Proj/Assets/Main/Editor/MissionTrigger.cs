@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadBob1 : MonoBehaviour {
+public class MissionTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
