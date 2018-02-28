@@ -22,7 +22,6 @@ public class Ai : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Vector3 PlayerLastSighting;
     [HideInInspector] public bool playerHiding = false;
-    public float maxViewDistance; 
 
     private GameObject player;
     private GameObject room;
@@ -30,6 +29,7 @@ public class Ai : MonoBehaviour
     private int patrollingPoint = 0;
     private bool arrived = false;
     private bool patrollingRoom;
+ 
 
 
     public enum AiState { wait, patrolRoom, patrolKeypoint, chasePlayer };
@@ -82,10 +82,11 @@ public class Ai : MonoBehaviour
     {
         playerIsVisible = false;
         Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
+        float maxViewDistance;
+        float maxHearDistance;
 
-
-        var pC = FindObjectOfType<PlayerController>();
-        if(pC.flashlight || pC.crouching)
+        var playerController = FindObjectOfType<PlayerController>();
+        if(playerController.flashlight || playerController.crouching)
             maxViewDistance = 10;
         else
             maxViewDistance = 5;
@@ -104,11 +105,15 @@ public class Ai : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= 5 && !playerHiding)
+        if(playerController.crouching)
+            maxHearDistance = 2f;
+        else
+            maxHearDistance = 5;
+
+        if(Vector3.Distance(transform.position, player.transform.position) <= maxHearDistance && !playerHiding)
         {
             playerIsVisible = true;
             PlayerLastSighting = player.transform.position;
-
         }
     }
 
