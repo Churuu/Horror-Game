@@ -110,7 +110,7 @@ public class Ai : MonoBehaviour
         else
             maxHearDistance = 5;
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= maxHearDistance && !playerHiding)
+        if(Vector3.Distance(transform.position, player.transform.position) <= maxHearDistance && !playerHiding && playerController.playerWalking)
         {
             playerIsVisible = true;
             PlayerLastSighting = player.transform.position;
@@ -130,7 +130,7 @@ public class Ai : MonoBehaviour
         {
             room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
-            if (!Physics.CheckSphere(AiDestination, 0.3f))
+            if (!Physics.CheckSphere(AiDestination, 0.3f) && room.GetComponent<Room>().roomEnabled)
             {
                 agent.SetDestination(AiDestination);
                 patrollingRoom = true;

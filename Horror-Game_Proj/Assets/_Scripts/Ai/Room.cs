@@ -5,6 +5,8 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
 
+    public bool roomEnabled = true;
+
     void OnDrawGizmos()
     {
 

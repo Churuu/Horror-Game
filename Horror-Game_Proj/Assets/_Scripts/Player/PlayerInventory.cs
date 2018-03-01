@@ -42,12 +42,15 @@ public class PlayerInventory : MonoBehaviour {
             {
                 if(Input.GetButtonDown("Interaction"))
                 {
-					if(playerInventory.Contains(hit.collider.GetComponent<Door>().keyToOpen))
+                    var _door = hit.collider;
+					if(playerInventory.Contains(_door.GetComponent<Door>().keyToOpen))
                     {
-                        if(hit.collider.GetComponent<Door>().useAnimation)
-                            hit.collider.gameObject.GetComponent<Animation>().Play();
+                        if(_door.GetComponent<Door>().useAnimation)
+                            _door.gameObject.GetComponent<Animation>().Play();
                         else
-                            hit.collider.gameObject.SetActive(false);
+                            _door.gameObject.SetActive(false);
+
+                        _door.GetComponent<Door>().UnlockRooms();
                     }      
                 }
             }

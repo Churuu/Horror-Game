@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject cellphone;
 	public Vector3 headNormalPos;
 	public Vector3 headCrouchPos;
+	public bool playerWalking = false;
 
 
 	private Rigidbody rb;
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour {
     private const float staminaTimeToRegen = 3.0f;
     private float originalWalkspeed = 3;
     private float originalRunspeed;
-	private bool playerWalking;
 	private bool playerTired = false;
 
 
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 			var col = GetComponent<CapsuleCollider>();
             if (crouching)
             {
-				speed = 2.5f;
+				speed = 1.5f;
 				col.height = Mathf.Lerp(col.height, 1, 0.1f);
 				head.localPosition = Vector3.Lerp(head.localPosition, headCrouchPos, 0.1f);
             }

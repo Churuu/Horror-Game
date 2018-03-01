@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour {
 
+
 	void OnTriggerStay(Collider other)
 	{
 		if(other.gameObject.tag == "Player")
