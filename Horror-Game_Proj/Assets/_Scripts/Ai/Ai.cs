@@ -144,13 +144,6 @@ public class Ai : MonoBehaviour
             }
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1f, 0f, 0, 1f);
-        Gizmos.DrawSphere(AiDestination, 0.3f);
-    }
-
-
     void ResetRoomPatrol()
     {
         CancelInvoke("ResetRoomPatrol");
