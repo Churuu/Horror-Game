@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StepSound : MonoBehaviour 
 {
+	public float standingStepCycle;
+	public float crouchingStepCycle;
+
 	PlayerController playerController;
 	AudioSource src;
 	float stepCycle = 0.5f;
@@ -25,12 +28,12 @@ public class StepSound : MonoBehaviour
 		if(playerController.crouching)
 		{
 			src.volume = 0.05f;
-			stepCycle = 1f;
+			stepCycle = crouchingStepCycle;
 		}
 		else
 		{
 			src.volume = 0.1f;
-			stepCycle = 0.5f;
+			stepCycle = standingStepCycle;
 		}
 	}
 

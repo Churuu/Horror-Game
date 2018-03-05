@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 54459516864708872}
   - component: {fileID: 82681462944503436}
   - component: {fileID: 114391241700470386}
-  - component: {fileID: 114336025140906364}
   - component: {fileID: 114668567127354244}
   - component: {fileID: 136793442376091680}
   m_Layer: 0
@@ -282,19 +281,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114336025140906364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1900555371843082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bacb84988912d34e90cb7ba904eb6a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interaction: {fileID: 0}
-  interactionText: {fileID: 0}
 --- !u!114 &114391241700470386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: []
+  interaction: {fileID: 0}
+  interactionText: {fileID: 0}
 --- !u!114 &114993830596184056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +329,7 @@ MonoBehaviour:
   cellphone: {fileID: 1328655473450472}
   headNormalPos: {x: 0, y: 0.8, z: 0}
   headCrouchPos: {x: 0, y: 0.3, z: 0}
+  playerWalking: 0
 --- !u!124 &124805526672024012
 Behaviour:
   m_ObjectHideFlags: 1
