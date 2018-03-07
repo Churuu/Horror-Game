@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour {
 		y += Input.GetAxis("Mouse X") * sensitivity;
 		x += Input.GetAxis("Mouse Y") * sensitivity;
 
+		x = Mathf.Clamp(x, -90, 90);
 		transform.localRotation = Quaternion.Euler(0, y, 0);
 		head.localRotation = Quaternion.Euler(x, 0, 0);
 	}
