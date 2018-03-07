@@ -6,24 +6,28 @@ public class PhoneBob : MonoBehaviour
 {
 
 	public float swayAmount;
-    public float swayDamp;
 
 	PlayerController playerController;
     Animator anim;
 	Vector3 initialPosition;
+    float x;
+    float y;
 
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         anim = GetComponent<Animator>();
 		initialPosition = transform.localPosition;
+
+
     }
 
     void Update()
     {
         bobbing();
-		Sway();
+        Sway();
     }
+
 
     void bobbing()
     {
@@ -42,13 +46,10 @@ public class PhoneBob : MonoBehaviour
 
     void Sway()
     {
-		float x = -Input.GetAxis("Mouse X") * swayAmount;
-		float y = Input.GetAxis("Mouse Y") * swayAmount;
-
+		x = -Input.GetAxis("Mouse X") * swayAmount;
+		y = Input.GetAxis("Mouse Y") * swayAmount;
+        
         anim.SetFloat("Blend", x);
         anim.SetFloat("Up", y);
-
-		/*Vector3 offset = new Vector3(x,y, 0);
-		transform.localPosition = Vector3.Lerp(transform.localPosition, offset + initialPosition, Time.deltaTime * swayDamp);*/
     }
 }

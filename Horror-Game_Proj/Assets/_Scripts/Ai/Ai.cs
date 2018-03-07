@@ -29,6 +29,7 @@ public class Ai : MonoBehaviour
     private int patrollingPoint = 0;
     private bool arrived = false;
     private bool patrollingRoom;
+    private Animator _anim;
  
 
 
@@ -38,6 +39,7 @@ public class Ai : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
