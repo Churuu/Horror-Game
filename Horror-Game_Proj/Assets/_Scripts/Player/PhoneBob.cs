@@ -9,13 +9,13 @@ public class PhoneBob : MonoBehaviour
     public float swayDamp;
 
 	PlayerController playerController;
-    Animation anim;
+    Animator anim;
 	Vector3 initialPosition;
 
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
 		initialPosition = transform.localPosition;
     }
 
@@ -27,25 +27,28 @@ public class PhoneBob : MonoBehaviour
 
     void bobbing()
     {
-        if (playerController.playerWalking && !anim.isPlaying)
+        if (playerController.playerWalking && !CellphoneAnimation.isPlaying)
         {
-            anim.Play();
+            anim.Play("CellphoneBob");
         }
 
         if (playerController.crouching)
-            anim["CellphoneBob"].speed = 0.5f;
+            anim.speed = 0.5f;
         else
         {
-            anim["CellphoneBob"].speed = 1f;
+            anim.speed = 1f;
         }
     }
 
     void Sway()
     {
-		float y = Input.GetAxis("Mouse X") * swayAmount;
-		float x = Input.GetAxis("Mouse Y") * swayAmount;
+		float x = -Input.GetAxis("Mouse X") * swayAmount;
+		float y = Input.GetAxis("Mouse Y") * swayAmount;
 
-		Vector3 offset = new Vector3(x,y, transform.localPosition.z);
-		transform.localPosition = Vector3.Lerp(transform.localPosition, offset + initialPosition, Time.deltaTime * swayDamp);
+        anim.SetFloat("Blend", x);
+        anim.SetFloat("Up", y);
+
+		/*Vector3 offset = new Vector3(x,y, 0);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, offset + initialPosition, Time.deltaTime * swayDamp);*/
     }
 }
