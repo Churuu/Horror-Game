@@ -8648,7 +8648,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400124, guid: 22dc7eacf862df441810433d8e22476e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.1
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 400124, guid: 22dc7eacf862df441810433d8e22476e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8707,7 +8707,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076611269}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -8728,7 +8728,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076611269}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d72e5cfe801c3c4db8e50c2778239d1, type: 3}
   m_Name: 
