@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = new Vector3(x_,  0f, z_) * speed * Time.deltaTime;
 
 		transform.Translate(movement);
-		if(movement.x > 0 || movement.z > 0)
+		if(movement.x > 0 || movement.z > 0 || movement.x < 0 || movement.z < 0)
 			playerWalking = true;
 		else
 			playerWalking = false;
@@ -107,13 +107,13 @@ public class PlayerController : MonoBehaviour {
 			var col = GetComponent<CapsuleCollider>();
             if (crouching)
             {
-				speed = 1.5f;
+				speed = 0.5f;
 				col.height = Mathf.Lerp(col.height, 1, 0.1f);
 				head.localPosition = Vector3.Lerp(head.localPosition, headCrouchPos, 0.1f);
             }
             else if (!crouching)
             {
-				speed = 5;
+				speed = 2;
 				col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
 				head.localPosition = Vector3.Lerp(head.localPosition, headNormalPos, 0.1f);
             }
