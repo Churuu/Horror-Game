@@ -67,7 +67,10 @@ public class Ai : MonoBehaviour
     IEnumerator AI()
     {
         if (playerIsVisible == true)
+        {
             state = AiState.chasePlayer;
+            agent.speed = chasingSpeed;
+        }
         else
         {
             if(state == AiState.chasePlayer)
@@ -76,8 +79,10 @@ public class Ai : MonoBehaviour
                 agent.speed = walkingSpeed;
                 state = AiState.patrolRoom;
             }
-                
         }
+
+    _anim.SetFloat("Speed", agent.speed);
+
     }
 
     void CheckIfPlayerVisible()
@@ -135,14 +140,18 @@ public class Ai : MonoBehaviour
             if (!Physics.CheckSphere(AiDestination, 0.3f) && room.GetComponent<Room>().roomEnabled)
             {
                 agent.SetDestination(AiDestination);
+                agent.speed = walkingSpeed;
                 patrollingRoom = true;
             }
         }
 
             if (!agent.pathPending)
             {
-                if (agent.remainingDistance <= 0.5f)
+                if (agent.remainingDistance <= 0.1f)
+                {
                     Invoke("ResetRoomPatrol", 5);
+                    agent.speed = 0;
+                }
             }
     }
 
