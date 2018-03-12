@@ -45,10 +45,10 @@ public class PlayerInventory : MonoBehaviour {
                     var _door = hit.collider;
 					if(playerInventory.Contains(_door.GetComponent<Door>().keyToOpen))
                     {
-                        if(_door.GetComponent<Door>().useAnimation)
-                            _door.gameObject.GetComponent<Animation>().Play();
-                        else
-                            _door.gameObject.SetActive(false);
+                        //if(_door.GetComponent<Door>().useAnimation)
+                        //    _door.gameObject.GetComponent<Animation>().Play();
+                        //else
+                        //    _door.gameObject.SetActive(false);
 
                         _door.GetComponent<Door>().UnlockRooms();
                     }      
