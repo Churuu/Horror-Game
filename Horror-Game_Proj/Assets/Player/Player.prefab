@@ -126,10 +126,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4143492500043304}
   - component: {fileID: 114460737414336332}
-  - component: {fileID: 54576094434619334}
   - component: {fileID: 82479134634408832}
   - component: {fileID: 114101373558669264}
-  - component: {fileID: 136049743118937696}
+  - component: {fileID: 54692240459011112}
+  - component: {fileID: 136786928898874910}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699569772545070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.973017, y: 0.95, z: -9.356494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -386,7 +386,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269084748763424}
   m_Mesh: {fileID: 4300000, guid: 69c36c905d5651245a09816799fb4ee1, type: 3}
---- !u!54 &54576094434619334
+--- !u!54 &54692240459011112
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -397,9 +397,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 96
   m_CollisionDetection: 1
 --- !u!54 &54956815162954620
 Rigidbody:
@@ -684,7 +684,7 @@ MonoBehaviour:
   headCrouchPos: {x: 0, y: 0.3, z: 0}
   playerWalking: 0
   playerTired: 0
-  crouchSpeed: 0
+  crouchSpeed: 2
 --- !u!114 &114489031030513648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -738,7 +738,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054839348875972}
   m_Enabled: 1
---- !u!136 &136049743118937696
+--- !u!136 &136786928898874910
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

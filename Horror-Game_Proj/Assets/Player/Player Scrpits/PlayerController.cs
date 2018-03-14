@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private bool notLeaning;
     public float crouchSpeed;
 
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -78,10 +80,12 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(x_, 0f, z_) * speed * Time.deltaTime;
 
         transform.Translate(movement);
+
         if (movement.x > 0 || movement.z > 0 || movement.x < 0 || movement.z < 0)
             playerWalking = true;
         else
             playerWalking = false;
+
     }
 
     private void Stamina()
@@ -150,13 +154,13 @@ public class PlayerController : MonoBehaviour
             leaningRight = false;
         }
 
-        if (transform.rotation.z == 0)
+        if (!leaningLeft && !leaningRight)
         {
-            notLeaning = false;
+            notLeaning = true;
         }
         else
         {
-            notLeaning = true;
+            notLeaning = false;
         }
 
         if (leaningRight)
@@ -188,6 +192,7 @@ public class PlayerController : MonoBehaviour
             crouching = !crouching;
 
         var col = GetComponent<CapsuleCollider>();
+       
         if (crouching)
         {
             speed = crouchSpeed;
