@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 /* This script controls the AI and how it will react in different situations */
 
- 
+
 public class Ai : MonoBehaviour
 {
 
@@ -30,7 +30,7 @@ public class Ai : MonoBehaviour
     private bool arrived = false;
     private bool patrollingRoom;
     private Animator _anim;
- 
+
 
 
     public enum AiState { wait, patrolRoom, patrolKeypoint, chasePlayer };
@@ -70,10 +70,11 @@ public class Ai : MonoBehaviour
         {
             state = AiState.chasePlayer;
             agent.speed = chasingSpeed;
+            Kill();
         }
         else
         {
-            if(state == AiState.chasePlayer)
+            if (state == AiState.chasePlayer)
             {
                 yield return new WaitForSeconds(10);
                 agent.speed = walkingSpeed;
@@ -81,7 +82,7 @@ public class Ai : MonoBehaviour
             }
         }
 
-    _anim.SetFloat("Speed", agent.speed);
+        _anim.SetFloat("Speed", agent.speed);
 
     }
 
@@ -93,18 +94,18 @@ public class Ai : MonoBehaviour
         float maxHearDistance;
 
         var playerController = FindObjectOfType<PlayerController>();
-        if(playerController.flashlight || playerController.crouching)
+        if (playerController.flashlight || playerController.crouching)
             maxViewDistance = 10;
         else
             maxViewDistance = 5;
 
 
-        if(Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
+        if (Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 2))
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, maxViewDistance))
             {
-                if(hit.collider.tag == "Player" && !playerHiding) 
+                if (hit.collider.tag == "Player" && !playerHiding)
                 {
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
@@ -112,12 +113,12 @@ public class Ai : MonoBehaviour
             }
         }
 
-        if(playerController.crouching)
+        if (playerController.crouching)
             maxHearDistance = 2f;
         else
             maxHearDistance = 5;
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= maxHearDistance && !playerHiding && playerController.playerWalking)
+        if (Vector3.Distance(transform.position, player.transform.position) <= maxHearDistance && !playerHiding && playerController.playerWalking)
         {
             playerIsVisible = true;
             PlayerLastSighting = player.transform.position;
@@ -135,7 +136,7 @@ public class Ai : MonoBehaviour
     {
         if (!patrollingRoom)
         {
-            room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount + 1)).gameObject;
+            room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount)).gameObject;
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
             if (!Physics.CheckSphere(AiDestination, 0.3f) && room.GetComponent<Room>().roomEnabled)
             {
@@ -145,14 +146,14 @@ public class Ai : MonoBehaviour
             }
         }
 
-            if (!agent.pathPending)
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= 0.1f)
             {
-                if (agent.remainingDistance <= 0.1f)
-                {
-                    Invoke("ResetRoomPatrol", 5);
-                    agent.speed = 0;
-                }
+                Invoke("ResetRoomPatrol", 5);
+                agent.speed = 0;
             }
+        }
     }
 
     void ResetRoomPatrol()
@@ -214,7 +215,7 @@ public class Ai : MonoBehaviour
         }
     }
 
-    Vector3 GetRandomPosInsideBox(Vector3 center, Vector3 size) 
+    Vector3 GetRandomPosInsideBox(Vector3 center, Vector3 size)
     {
         Vector3 rndP = new Vector3(
             size.x * (UnityEngine.Random.value - .5f),
@@ -222,5 +223,18 @@ public class Ai : MonoBehaviour
             size.z * (UnityEngine.Random.value - .5f));
         return center + rndP;
 
+    }
+
+    void Kill()
+    {
+        Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position, 3.5f) && !player.GetComponent<PlayerController>().playerIsStopped && Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 4))
+        {
+            state = AiState.wait;
+            agent.isStopped = true;
+            _anim.Play("Kill");
+            player.GetComponent<PlayerController>().StopPlayerForDeathScenario(transform);
+
+        }
     }
 }

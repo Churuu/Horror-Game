@@ -27,7 +27,12 @@ public class AIManager : EditorWindow {
 
         if (GUILayout.Button("Add Key Room"))
         {
-            Instantiate(KeyRoom);
+            if (GameObject.Find("Key Rooms") == null)
+            {
+                GameObject KeyRooms = new GameObject("Key Rooms");
+            }
+
+            Instantiate(KeyRoom, GameObject.Find("Key Rooms").transform);
         }
 
         if (GUILayout.Button("Add Floor"))
