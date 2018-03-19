@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3572,7 +3572,7 @@ Animator:
   m_GameObject: {fileID: 992237460}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: efb5a06af1387134c9346b35174280ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: 125cc8f21aaeb384e90548ad4bd74b18, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3580,6 +3580,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &992237465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992237460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445b9e8cf2fa15c4cad421bb46b9a967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayAmount: 0.2
 --- !u!1001 &997160970
 Prefab:
   m_ObjectHideFlags: 0
@@ -4352,6 +4364,14 @@ Prefab:
     - target: {fileID: 4604352399732810, guid: 03e4719393ee3384980a31936be065b0, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239036599950828, guid: 03e4719393ee3384980a31936be065b0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239036599950828, guid: 03e4719393ee3384980a31936be065b0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.479
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03e4719393ee3384980a31936be065b0, type: 2}

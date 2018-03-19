@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 headNormalPos;
     public Vector3 headCrouchPos;
     public bool playerWalking = false;
+    [HideInInspector] public bool playerIsStopped;
 
 
     private Rigidbody rb;
@@ -222,5 +223,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Ai")
             FindObjectOfType<QuickSaveSystem>().Load();
+    }
+
+    public void StopPlayerForDeathScenario(Transform t)
+    {
+
     }
 }
