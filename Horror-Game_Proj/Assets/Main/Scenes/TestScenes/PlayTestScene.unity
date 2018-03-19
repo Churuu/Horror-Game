@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ Transform:
   m_LocalScale: {x: 50, y: 3, z: 50}
   m_Children: []
   m_Father: {fileID: 1682810401}
-  m_RootOrder: 47
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &172044497 stripped
 GameObject:
@@ -1342,6 +1342,11 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23543844389934580, guid: 8922f8c247b60404c839ae9b6ead716b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: edc4ee0fcb980ba479c110bf14c61e20, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8922f8c247b60404c839ae9b6ead716b, type: 2}
   m_IsPrefabParent: 0
@@ -2667,7 +2672,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 816473983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3041, y: 0, z: -0.237}
+  m_LocalPosition: {x: 0.3073, y: 0, z: -0.2266}
   m_LocalScale: {x: 0.19851525, y: 1, z: 0.21963434}
   m_Children:
   - {fileID: 1589296701}
@@ -2798,8 +2803,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847233443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 1, z: 0.75}
-  m_LocalScale: {x: 47.294792, y: 2, z: 49.108234}
+  m_LocalPosition: {x: 0.38, y: 2.04, z: 0.21}
+  m_LocalScale: {x: 48.708584, y: 3.7486937, z: 49.108234}
   m_Children:
   - {fileID: 1628899732}
   - {fileID: 1983334927}
@@ -3816,7 +3821,7 @@ Transform:
   - {fileID: 95785544}
   - {fileID: 1351204897}
   m_Father: {fileID: 1682810401}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1 &1076978256
 GameObject:
@@ -5763,8 +5768,8 @@ Transform:
   - {fileID: 276628725}
   - {fileID: 1439928735}
   - {fileID: 187238222}
+  - {fileID: 160770305}
   - {fileID: 1055405812}
-  - {fileID: 2026268504}
   - {fileID: 1000458914}
   - {fileID: 531101285}
   - {fileID: 1838080912}
@@ -5781,7 +5786,7 @@ Transform:
   - {fileID: 1293563698}
   - {fileID: 1940581722}
   - {fileID: 432282933}
-  - {fileID: 160770305}
+  - {fileID: 2026268504}
   - {fileID: 296101702}
   - {fileID: 2107142872}
   - {fileID: 781966624}
