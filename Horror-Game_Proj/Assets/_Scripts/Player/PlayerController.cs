@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MouseController();
+        if (!playerIsStopped)
+            MouseController();
         Flashlight();
         Stamina();
         Crouching();
@@ -58,7 +59,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        PlayerWalking();
+        if (!playerIsStopped)
+            PlayerWalking();
     }
 
     // Allows the player to look around
@@ -227,6 +229,7 @@ public class PlayerController : MonoBehaviour
 
     public void StopPlayerForDeathScenario(Transform t)
     {
-
+        transform.LookAt(t);
+        playerIsStopped = true;
     }
 }

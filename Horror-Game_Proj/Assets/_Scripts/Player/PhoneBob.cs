@@ -31,7 +31,7 @@ public class PhoneBob : MonoBehaviour
 
     void bobbing()
     {
-        if (playerController.playerWalking)
+        if (playerController.playerWalking && !CellphoneAnimation.isPlaying)
         {
             anim.Play("CellphoneBob");
         }
