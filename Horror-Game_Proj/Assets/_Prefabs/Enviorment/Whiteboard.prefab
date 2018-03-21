@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4627712466524506}
   - component: {fileID: 33366878461393644}
   - component: {fileID: 23917823986004930}
-  - component: {fileID: 95263449321793508}
   - component: {fileID: 65523170124540404}
   m_Layer: 0
   m_Name: Whiteboard
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06216606, y: 1.875326, z: 3.371244}
   m_Center: {x: -0.031082617, y: 0.937663, z: 1.62954}
---- !u!95 &95263449321793508
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293672571035234}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5984396da41d3994280052c6bf14b494, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

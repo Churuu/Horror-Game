@@ -7,16 +7,19 @@ public class PlayerController : MonoBehaviour
 
 
     public float sensitivity;
-    public float speed;
     public float stamina = 10.0f;
+    public float speed;
+    public float crouchSpeed;
+    public float leaningAngle;
     public Transform head;
-    [HideInInspector] public bool flashlight = true;
-    [HideInInspector] public bool crouching;
     public GameObject cellphone;
+    public bool playerWalking = false;
     public Vector3 headNormalPos;
     public Vector3 headCrouchPos;
-    public bool playerWalking = false;
+    [HideInInspector] public bool flashlight = true;
+    [HideInInspector] public bool crouching;
     [HideInInspector] public bool playerIsStopped;
+
 
 
     private Rigidbody rb;
@@ -37,7 +40,6 @@ public class PlayerController : MonoBehaviour
     private bool leaningLeft;
     private bool leaningRight;
     private bool notLeaning;
-    public float crouchSpeed;
 
     void Start()
     {
@@ -78,10 +80,11 @@ public class PlayerController : MonoBehaviour
     {
         float x_ = Input.GetAxis("Horizontal");
         float z_ = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(x_, 0f, z_) * speed * Time.deltaTime;
-
+        Vector3 movement = new Vector3(x_, 0f, z_);
+        movement.Normalize();
+        movement *= speed * Time.deltaTime;
         transform.Translate(movement);
-        if (movement.x > 0 || movement.z > 0 || movement.x < 0 || movement.z < 0)
+        if (movement.magnitude > 0.1f*Time.deltaTime)
             playerWalking = true;
         else
             playerWalking = false;
@@ -127,8 +130,8 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        Quaternion newAngleRight = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 30);
-        Quaternion newAngleLeft = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -30);
+        Quaternion newAngleRight = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, leaningAngle);
+        Quaternion newAngleLeft = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -leaningAngle);
 
         Quaternion normalAngel = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
 

@@ -8,6 +8,7 @@ public class PhoneBob : MonoBehaviour
     public float swayAmount;
     public float maxStoreValue;
 
+    Queue<float> test;
     List<Vector2> storedVectors = new List<Vector2>();
     PlayerController playerController;
     Animator anim;
@@ -21,7 +22,7 @@ public class PhoneBob : MonoBehaviour
         anim = GetComponent<Animator>();
         initialPosition = transform.localPosition;
 
-
+        
     }
 
     void Update()
@@ -33,10 +34,7 @@ public class PhoneBob : MonoBehaviour
 
     void bobbing()
     {
-        if (playerController.playerWalking && !CellphoneAnimation.isPlaying)
-        {
-            anim.Play("CellphoneBob");
-        }
+        anim.SetBool("IsMoving", playerController.playerWalking); 
 
         if (playerController.crouching)
             anim.speed = 0.5f;

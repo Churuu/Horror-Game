@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4937580507814020}
   - component: {fileID: 33777283885732898}
   - component: {fileID: 23628129430027898}
-  - component: {fileID: 95159213661750488}
   - component: {fileID: 65961915582817744}
   m_Layer: 0
   m_Name: Book shelf
@@ -96,20 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4762325, y: 2.4412875, z: 2.0407395}
   m_Center: {x: 0.22924478, y: 1.2206438, z: -1.0114985}
---- !u!95 &95159213661750488
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1048721866400194}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 18380eecc1cc94442bbb1666ee7c10ee, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
