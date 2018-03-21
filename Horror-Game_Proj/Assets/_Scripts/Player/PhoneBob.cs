@@ -6,7 +6,7 @@ public class PhoneBob : MonoBehaviour
 {
 
 	public float swayAmount;
-
+    Queue<Vector2> storedVectors;
 	PlayerController playerController;
     Animator anim;
 	Vector3 initialPosition;
@@ -48,8 +48,10 @@ public class PhoneBob : MonoBehaviour
     {
 		x = -Input.GetAxis("Mouse X") * swayAmount;
 		y = Input.GetAxis("Mouse Y") * swayAmount;
-        
-        anim.SetFloat("Blend", x);
-        anim.SetFloat("Up", y);
+        Vector2 mouse = new Vector2(x,y);
+        storedVectors.Enqueue(mouse);
+
+        anim.SetFloat("Blend", mouse.x);
+        anim.SetFloat("Up", mouse.y);
     }
 }
