@@ -5,11 +5,13 @@ using UnityEngine;
 public class PhoneBob : MonoBehaviour
 {
 
-	public float swayAmount;
-    Queue<Vector2> storedVectors;
-	PlayerController playerController;
+    public float swayAmount;
+    public float maxStoreValue;
+
+    List<Vector2> storedVectors = new List<Vector2>();
+    PlayerController playerController;
     Animator anim;
-	Vector3 initialPosition;
+    Vector3 initialPosition;
     float x;
     float y;
 
@@ -17,7 +19,7 @@ public class PhoneBob : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
         anim = GetComponent<Animator>();
-		initialPosition = transform.localPosition;
+        initialPosition = transform.localPosition;
 
 
     }
@@ -46,12 +48,21 @@ public class PhoneBob : MonoBehaviour
 
     void Sway()
     {
-		x = -Input.GetAxis("Mouse X") * swayAmount;
-		y = Input.GetAxis("Mouse Y") * swayAmount;
-        Vector2 mouse = new Vector2(x,y);
-        storedVectors.Enqueue(mouse);
+        x = -Input.GetAxis("Mouse X") * swayAmount;
+        y = Input.GetAxis("Mouse Y") * swayAmount;
+        Vector2 mouse = new Vector2(x, y);
+        storedVectors.Insert(0, mouse);
+        if (storedVectors.Count > maxStoreValue)
+            storedVectors.RemoveAt(storedVectors.Count - 1);
 
-        anim.SetFloat("Blend", mouse.x);
-        anim.SetFloat("Up", mouse.y);
+        Vector2 combinedVectors = new Vector2();
+        foreach (var vector in storedVectors)
+        {
+            combinedVectors += vector;
+        }
+        combinedVectors = combinedVectors / maxStoreValue;
+
+        anim.SetFloat("Blend", combinedVectors.x);
+        anim.SetFloat("Up", combinedVectors.y);
     }
 }
