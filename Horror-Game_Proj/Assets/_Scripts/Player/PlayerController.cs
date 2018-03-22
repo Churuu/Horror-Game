@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool flashlight = true;
     [HideInInspector] public bool crouching;
     [HideInInspector] public bool playerIsStopped;
+    [HideInInspector] public bool playerIsRunning;
 
 
 
@@ -32,8 +33,7 @@ public class PlayerController : MonoBehaviour
     private const float staminaTimeToRegen = 3.0f;
     private float originalWalkspeed;
     private float runspeed = 8;
-    public bool playerTired = false;
-    private bool playerIsRunning;
+    private bool playerTired = false;
     private Transform newAngleRight;
     private Transform newAngleLeft;
     private Transform normalAngel;
@@ -50,8 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!playerIsStopped)
-            MouseController();
+        MouseController();
         Flashlight();
         Stamina();
         Crouching();
@@ -61,8 +60,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!playerIsStopped)
-            PlayerWalking();
+        PlayerWalking();
     }
 
     // Allows the player to look around
@@ -228,11 +226,5 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Ai")
             FindObjectOfType<QuickSaveSystem>().Load();
-    }
-
-    public void StopPlayerForDeathScenario(Transform t)
-    {
-        transform.LookAt(t);
-        playerIsStopped = true;
     }
 }

@@ -3,79 +3,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInventory : MonoBehaviour {
+public class PlayerInventory : MonoBehaviour
+{
 
-	[HideInInspector] public List<GameObject> playerInventory = new List<GameObject>();
-	public GameObject interaction;
-	public Text interactionText;
+    [HideInInspector] public List<GameObject> playerInventory = new List<GameObject>();
+    public GameObject interaction;
+    public Text interactionText;
 
-	void Update()
-	{
+    void Update()
+    {
         PickObject();
         OpenDoor();
         ShowInformationOnScreenIneractions();
         Cursor.lockState = CursorLockMode.Locked;
-	}
+    }
 
 
-    private void PickObject() 
+    private void PickObject()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
+        if (Input.GetButtonDown("Interaction"))
         {
-            if(hit.collider.tag == "ObjectiveItem")
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
             {
-                if(Input.GetButtonDown("Interaction"))
+                if (hit.collider.tag == "ObjectiveItem")
                 {
-					playerInventory.Add (hit.collider.gameObject);
+                    playerInventory.Add(hit.collider.gameObject);
                     hit.collider.gameObject.SetActive(false);
                 }
             }
         }
     }
-    private void OpenDoor() 
+    private void OpenDoor()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
+        if (Input.GetButtonDown("Interaction"))
         {
-            if(hit.collider.tag == "Door")
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
             {
-                if(Input.GetButtonDown("Interaction"))
+                if (hit.collider.tag == "Door")
                 {
                     var _door = hit.collider;
-					if(playerInventory.Contains(_door.GetComponent<Door>().keyToOpen))
+                    if (playerInventory.Contains(_door.transform.parent.GetComponent<Door>().keyToOpen))
                     {
-                        //if(_door.GetComponent<Door>().useAnimation)
-                        //    _door.gameObject.GetComponent<Animation>().Play();
-                        //else
-                        //    _door.gameObject.SetActive(false);
-
-                        _door.GetComponent<Door>().UnlockRooms();
-                    }      
+                        _door.transform.parent.GetComponent<Door>().UnlockRooms();
+                    }
                 }
             }
         }
     }
 
 
-    	private void ShowInformationOnScreenIneractions()
+    private void ShowInformationOnScreenIneractions()
     {
-		interaction.SetActive(false);
-		interactionText.text = "";
+        interaction.SetActive(false);
+        interactionText.text = "";
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f))
         {
-            if(hit.collider.tag == "Door")
+            if (hit.collider.tag == "Door")
             {
-				interaction.SetActive(true);
-				interactionText.text = "Door";
+                interaction.SetActive(true);
+                interactionText.text = "Door";
             }
-			if(hit.collider.tag == "ObjectiveItem")
-			{
-				interaction.SetActive(true);
-				interactionText.text = hit.collider.name;
-			}
+            if (hit.collider.tag == "ObjectiveItem")
+            {
+                interaction.SetActive(true);
+                interactionText.text = hit.collider.name;
+            }
+            if (hit.collider.tag == "Generator")
+            {
+                interaction.SetActive(true);
+                interactionText.text = "Generator";
+            }
+        }
+    }
+
+    private void Generator()
+    {
+        RaycastHit hit;
+        if (Input.GetButtonDown("Interaction"))
+        {
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
+            {
+                if (hit.collider.tag == "Generator")
+                {
+                    playerInventory.Add(hit.collider.gameObject);
+                }
+            }
         }
     }
 }

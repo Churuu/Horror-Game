@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114391241700470386}
   - component: {fileID: 114668567127354244}
   - component: {fileID: 136793442376091680}
+  - component: {fileID: 114896591492188868}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -87,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1900555371843082}
   m_LocalRotation: {x: -0, y: 0.70710886, z: -0, w: -0.7071048}
-  m_LocalPosition: {x: -7.83, y: 1, z: -9.1}
+  m_LocalPosition: {x: 5.452136, y: 2.405, z: -2.2838385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4556902780830634}
@@ -174,7 +175,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b35eabf02e29ed4d951698b5827f40b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.139
   m_Pitch: 1
@@ -309,6 +310,24 @@ MonoBehaviour:
   playerInventory: []
   interaction: {fileID: 0}
   interactionText: {fileID: 0}
+--- !u!114 &114896591492188868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900555371843082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc1825974fad8b47b76d86526023194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standingStepCycle: 0.5
+  crouchingStepCycle: 1
+  clips:
+  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
+  - {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
+  - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
 --- !u!114 &114993830596184056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,15 +340,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  speed: 5
   stamina: 10
+  speed: 5
+  crouchSpeed: 0.5
+  leaningAngle: 10
   head: {fileID: 4556902780830634}
+  cellphone: {fileID: 1328655473450472}
+  playerWalking: 0
+  headNormalPos: {x: 0, y: 1.5, z: 0}
+  headCrouchPos: {x: 0, y: 0.7, z: 0}
   flashlight: 1
   crouching: 0
-  cellphone: {fileID: 1328655473450472}
-  headNormalPos: {x: 0, y: 0.8, z: 0}
-  headCrouchPos: {x: 0, y: 0.3, z: 0}
-  playerWalking: 0
+  playerIsStopped: 0
+  playerIsRunning: 0
 --- !u!124 &124805526672024012
 Behaviour:
   m_ObjectHideFlags: 1

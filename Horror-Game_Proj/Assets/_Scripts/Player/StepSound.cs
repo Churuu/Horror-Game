@@ -30,6 +30,11 @@ public class StepSound : MonoBehaviour
 			src.volume = 0.05f;
 			stepCycle = crouchingStepCycle;
 		}
+		else if (playerController.playerIsRunning && playerController.stamina > 0)
+		{
+			src.volume = 0.15f;
+			stepCycle = standingStepCycle / 2;
+		}
 		else
 		{
 			src.volume = 0.1f;

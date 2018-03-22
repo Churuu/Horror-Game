@@ -70,7 +70,6 @@ public class Ai : MonoBehaviour
         {
             state = AiState.chasePlayer;
             agent.speed = chasingSpeed;
-            Kill();
         }
         else
         {
@@ -223,18 +222,5 @@ public class Ai : MonoBehaviour
             size.z * (UnityEngine.Random.value - .5f));
         return center + rndP;
 
-    }
-
-    void Kill()
-    {
-        Vector3 dirToTarget = (player.transform.position - transform.position).normalized;
-        if (Physics.Raycast(transform.position, player.transform.position - transform.position, 3.5f) && !player.GetComponent<PlayerController>().playerIsStopped && Vector3.Angle(transform.forward, dirToTarget) < (fieldOfViewAngle / 4))
-        {
-            state = AiState.wait;
-            agent.isStopped = true;
-            _anim.Play("Kill");
-            player.GetComponent<PlayerController>().StopPlayerForDeathScenario(transform);
-
-        }
     }
 }

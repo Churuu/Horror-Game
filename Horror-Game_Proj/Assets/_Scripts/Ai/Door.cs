@@ -8,6 +8,6 @@ public class Door : MonoBehaviour {
 
 	public void UnlockRooms()
 	{
-        GetComponent<Animator>().SetBool("DoorIsOpen", true);
+        	GetComponent<Animator>().SetBool("DoorIsOpen", true);
 	}
 }
