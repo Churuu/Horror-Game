@@ -12,13 +12,14 @@ public class Ai : MonoBehaviour
 {
 
     // Script that controls the AI
-    [HideInInspector] public List<Transform> aiPointToPatrol;
     public AiState state;
-    [HideInInspector] public bool playerIsVisible = false;
-    [Range(100, 180)] public int fieldOfViewAngle;
-    [HideInInspector] public GameObject currentFloorToPatrol;
     [Range(1, 10)] public float chasingSpeed;
     [Range(1, 10)] public float walkingSpeed;
+    [Range(100, 180)] public int fieldOfViewAngle;
+    public AudioClip[] laugh;
+    [HideInInspector] public List<Transform> aiPointToPatrol;
+    [HideInInspector] public bool playerIsVisible = false;
+    [HideInInspector] public GameObject currentFloorToPatrol;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Vector3 PlayerLastSighting;
     [HideInInspector] public bool playerHiding = false;
@@ -27,9 +28,10 @@ public class Ai : MonoBehaviour
     private GameObject room;
     private Vector3 AiDestination;
     private int patrollingPoint = 0;
-    private bool arrived = false;
+    private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
     private Animator _anim;
+    private GameObject[] roomHolder;
 
 
 
@@ -38,19 +40,24 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        roomHolder = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-
-        StartCoroutine(AI());
         CheckIfPlayerVisible();
+        AnimationHandler();
+        StateHandler();
+    }
 
+    void StateHandler()
+    {
         switch (state)
         {
             case AiState.wait:
+                // Gör faktiskt inget men praktiskt ibland att ha.
                 break;
             case AiState.patrolRoom:
                 PatrolRoom();
@@ -64,26 +71,15 @@ public class Ai : MonoBehaviour
         }
     }
 
-    IEnumerator AI()
+    void AnimationHandler()
     {
-        if (playerIsVisible == true)
-        {
-            state = AiState.chasePlayer;
-            agent.speed = chasingSpeed;
-        }
-        else
-        {
-            if (state == AiState.chasePlayer)
-            {
-                yield return new WaitForSeconds(10);
-                agent.speed = walkingSpeed;
-                state = AiState.patrolRoom;
-            }
-        }
 
-        _anim.SetFloat("Speed", agent.speed);
+        _anim.SetBool("Walking", state == AiState.patrolRoom && patrollingRoom && agent.velocity.magnitude > 0.1 || state == AiState.patrolKeypoint && !patrollingKeyRoom && agent.velocity.magnitude > 0.1 ? true : false);
+        _anim.SetBool("Running", playerIsVisible && agent.velocity.magnitude > 0.1 || state == AiState.chasePlayer && agent.velocity.magnitude > 0.1 ? true : false);
+        _anim.SetBool("Idle", agent.velocity.magnitude == 0 ? true : false);
 
     }
+
 
     void CheckIfPlayerVisible()
     {
@@ -108,6 +104,7 @@ public class Ai : MonoBehaviour
                 {
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
+                    state = AiState.chasePlayer;
                 }
             }
         }
@@ -121,21 +118,30 @@ public class Ai : MonoBehaviour
         {
             playerIsVisible = true;
             PlayerLastSighting = player.transform.position;
+            state = AiState.chasePlayer;
+
         }
     }
 
     void ChasePlayer()
     {
-        CancelInvoke();
         agent.speed = chasingSpeed;
         agent.SetDestination(PlayerLastSighting);
+
+        if (!agent.pathPending)
+            if (agent.remainingDistance <= 0.1f)
+                Invoke("ReturnToRoomPatrol", 1);
+
+
+
+
     }
 
     public void PatrolRoom()
     {
         if (!patrollingRoom)
         {
-            room = currentFloorToPatrol.transform.GetChild(UnityEngine.Random.Range(0, transform.childCount)).gameObject;
+            room = roomHolder[UnityEngine.Random.Range(0, roomHolder.Length)];
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
             if (!Physics.CheckSphere(AiDestination, 0.3f) && room.GetComponent<Room>().roomEnabled)
             {
@@ -146,13 +152,8 @@ public class Ai : MonoBehaviour
         }
 
         if (!agent.pathPending)
-        {
             if (agent.remainingDistance <= 0.1f)
-            {
                 Invoke("ResetRoomPatrol", 5);
-                agent.speed = 0;
-            }
-        }
     }
 
     void ResetRoomPatrol()
@@ -165,16 +166,15 @@ public class Ai : MonoBehaviour
     public void PatrolKeyPoint(List<Transform> points)
     {
         agent.SetDestination(points[patrollingPoint].position);
-
         if (!agent.pathPending)
         {
             if (agent.remainingDistance < 0.05f)
             {
-                arrived = true;
-                if (arrived)
+                patrollingKeyRoom = false;
+                if (!patrollingKeyRoom)
                 {
                     Invoke("MoveToNextPoint", 5);
-                    arrived = false;
+                    patrollingKeyRoom = true;
                 }
             }
         }
@@ -184,8 +184,7 @@ public class Ai : MonoBehaviour
     {
         if (patrollingPoint == aiPointToPatrol.Count - 1)
         {
-            state = AiState.wait;
-            ResetPatrolPoints();
+            ReturnToRoomPatrol();
         }
         else
         {
@@ -194,9 +193,10 @@ public class Ai : MonoBehaviour
         }
     }
 
-    void ResetPatrolPoints()
+    void ReturnToRoomPatrol()
     {
         patrollingPoint = 0;
+        agent.speed = walkingSpeed;
         state = AiState.patrolRoom;
     }
 
@@ -221,6 +221,11 @@ public class Ai : MonoBehaviour
             0,
             size.z * (UnityEngine.Random.value - .5f));
         return center + rndP;
+
+    }
+
+    void Laugh()
+    {
 
     }
 }

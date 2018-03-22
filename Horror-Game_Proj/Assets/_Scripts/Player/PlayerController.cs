@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
         originalWalkspeed = speed;
+        LockCursor();
     }
 
     void Update()
@@ -61,6 +61,16 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         PlayerWalking();
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Allows the player to look around

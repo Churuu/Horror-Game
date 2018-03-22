@@ -15,7 +15,8 @@ public class PlayerInventory : MonoBehaviour
         PickObject();
         OpenDoor();
         ShowInformationOnScreenIneractions();
-        Cursor.lockState = CursorLockMode.Locked;
+        Generator();
+        WinDoor();
     }
 
 
@@ -77,6 +78,11 @@ public class PlayerInventory : MonoBehaviour
                 interaction.SetActive(true);
                 interactionText.text = "Generator";
             }
+            if (hit.collider.tag == "WinDoor")
+            {
+                interaction.SetActive(true);
+                interactionText.text = "Exit";
+            }
         }
     }
 
@@ -89,7 +95,25 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (hit.collider.tag == "Generator")
                 {
-                    playerInventory.Add(hit.collider.gameObject);
+                    FindObjectOfType<Generator>().generatorIsOn = true;
+                    print("generator is online");
+                }
+            }
+        }
+    }
+    private void WinDoor()
+    {
+        RaycastHit hit;
+        if (Input.GetButtonDown("Interaction"))
+        {
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
+            {
+                if (hit.collider.tag == "WinDoor")
+                {
+                    if (FindObjectOfType<Generator>().generatorIsOn)
+                    {
+                        FindObjectOfType<WinHandler>().WonGame();
+                    }
                 }
             }
         }
