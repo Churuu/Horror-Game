@@ -17,7 +17,7 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public AudioClip[] laugh;
-    public GameObject fade;
+    public Image fade;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -52,6 +52,7 @@ public class Ai : MonoBehaviour
         CheckIfPlayerVisible();
         AnimationHandler();
         StateHandler();
+        Kill();
     }
 
     void StateHandler()
@@ -229,11 +230,9 @@ public class Ai : MonoBehaviour
     void Kill()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        float alpha = ((distance / 2) *-1);
-        alpha = Mathf.Clamp01(alpha);
-        fade.GetComponent<image
+        float alpha = Mathf.Clamp01(distance);
+        alpha = alpha / distance;
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, alpha);
         print(alpha);
     }
-
-
 }
