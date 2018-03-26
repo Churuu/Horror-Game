@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float sensitivity;
     public float stamina = 10.0f;
-    public float speed;
+    public float walkSpeed;
     public float crouchSpeed;
     public float leaningAngle;
     public Transform head;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool playerWalking = false;
     public Vector3 headNormalPos;
     public Vector3 headCrouchPos;
+    [HideInInspector] public float speed;
     [HideInInspector] public bool flashlight = true;
     [HideInInspector] public bool crouching;
     [HideInInspector] public bool playerIsStopped;
@@ -31,7 +32,6 @@ public class PlayerController : MonoBehaviour
     private const float staminaDecreasePerFrame = 1.0f;
     private const float staminaIncreasePerFrame = 3.0f;
     private const float staminaTimeToRegen = 3.0f;
-    private float originalWalkspeed;
     private float runspeed = 8;
     private bool playerTired = false;
     private Transform newAngleRight;
@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        originalWalkspeed = speed;
         LockCursor();
     }
 
@@ -130,7 +129,7 @@ public class PlayerController : MonoBehaviour
             playerTired = false;
 
         if (playerTired)
-            speed = originalWalkspeed;
+            speed = walkSpeed;
 
 
     }
@@ -210,7 +209,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (!crouching && !playerIsRunning)
         {
-            speed = originalWalkspeed;
+            speed = walkSpeed;
             col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
             head.localPosition = Vector3.Lerp(head.localPosition, headNormalPos, 0.1f);
         }
