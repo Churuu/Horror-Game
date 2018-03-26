@@ -95,8 +95,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (hit.collider.tag == "Generator")
                 {
-                    FindObjectOfType<Generator>().generatorIsOn = true;
-                    print("generator is online");
+                    FindObjectOfType<Generator>().EnableGenerator();
                 }
             }
         }

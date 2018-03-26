@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 /* This script controls the AI and how it will react in different situations */
 
 
@@ -17,12 +17,14 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public AudioClip[] laugh;
+    public Image fade;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Vector3 PlayerLastSighting;
     [HideInInspector] public bool playerHiding = false;
+
 
     private GameObject player;
     private GameObject room;
@@ -50,6 +52,7 @@ public class Ai : MonoBehaviour
         CheckIfPlayerVisible();
         AnimationHandler();
         StateHandler();
+        Kill();
     }
 
     void StateHandler()
@@ -224,8 +227,12 @@ public class Ai : MonoBehaviour
 
     }
 
-    void Laugh()
+    void Kill()
     {
-
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float alpha = Mathf.Clamp01(distance);
+        alpha = alpha / distance;
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, alpha);
+        print(alpha);
     }
 }

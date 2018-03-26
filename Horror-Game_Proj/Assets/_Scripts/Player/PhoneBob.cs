@@ -12,7 +12,6 @@ public class PhoneBob : MonoBehaviour
     List<Vector2> storedVectors = new List<Vector2>();
     PlayerController playerController;
     Animator anim;
-    Vector3 initialPosition;
     float x;
     float y;
 
@@ -20,9 +19,6 @@ public class PhoneBob : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
         anim = GetComponent<Animator>();
-        initialPosition = transform.localPosition;
-
-        
     }
 
     void Update()
