@@ -230,9 +230,10 @@ public class Ai : MonoBehaviour
     void Kill()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        float alpha = Mathf.Clamp01(distance);
-        alpha = alpha / distance;
-        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, alpha);
-        print(alpha);
+        float target = Mathf.Clamp01(distance);
+        target = target / distance;
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
+        if(target == 1)
+            player.transform.position = new Vector3(16, 2, -22);
     }
 }

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4940552132721430}
   - component: {fileID: 95852044857634272}
   - component: {fileID: 114348680531542658}
-  - component: {fileID: 208013483615971858}
   m_Layer: 0
   m_Name: Big_Door
   m_TagString: Door
@@ -40,6 +39,7 @@ GameObject:
   - component: {fileID: 33039313493142712}
   - component: {fileID: 23198196190165860}
   - component: {fileID: 65399371214038724}
+  - component: {fileID: 208733990406424562}
   m_Layer: 0
   m_Name: pCube12
   m_TagString: Door
@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 33424120281055332}
   - component: {fileID: 23528960484933860}
   - component: {fileID: 65710823390743322}
+  - component: {fileID: 208932118250731792}
   m_Layer: 0
   m_Name: pCube11
   m_TagString: Door
@@ -77,7 +78,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4940552132721430}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -18.462883, z: 0}
 --- !u!4 &4905619706384598
 Transform:
   m_ObjectHideFlags: 1
@@ -90,22 +91,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4940552132721430}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 11.32774, z: 0}
 --- !u!4 &4940552132721430
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172443022352642}
-  m_LocalRotation: {x: -0, y: -0.0000005066395, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 0, z: -10.01}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000031292436}
+  m_LocalPosition: {x: 0.32, y: 0, z: 0.552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4905619706384598}
   - {fileID: 4380307100840150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
 --- !u!23 &23198196190165860
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -223,7 +224,7 @@ Animator:
   m_GameObject: {fileID: 1172443022352642}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 89a174c1130b86f4ea7194a0a728acce, type: 3}
-  m_Controller: {fileID: 9100000, guid: 03d5d44dcccd78b4d877f504847fd70b, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa4bafadb66a247409b5e081f13b5e0f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -243,18 +244,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToOpen: {fileID: 0}
---- !u!208 &208013483615971858
+--- !u!208 &208733990406424562
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1172443022352642}
+  m_GameObject: {fileID: 1299397562152106}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 2.06, y: 2.015, z: 0.53}
+  m_Extents: {x: 1.1620001, y: 1.7880001, z: 0.185}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1.88, z: 0}
+  m_Center: {x: 1.1620001, y: 1.7880001, z: 0.075}
+  m_TimeToStationary: 0.5
+--- !u!208 &208932118250731792
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1726912580418726}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.1620001, y: 1.7880001, z: 0.185}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1.1620001, y: 1.7880001, z: 0.075}
   m_TimeToStationary: 0.5
