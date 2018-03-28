@@ -156,11 +156,10 @@ GameObject:
   - component: {fileID: 4040650527186210}
   - component: {fileID: 95223162086588174}
   - component: {fileID: 195958140198039004}
-  - component: {fileID: 65192584452187124}
-  - component: {fileID: 114785173396572888}
+  - component: {fileID: 114607675373315144}
   m_Layer: 0
   m_Name: AI Cinematic
-  m_TagString: Ai
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1872,18 +1871,6 @@ Transform:
   m_Father: {fileID: 4296014448309474}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65192584452187124
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1131315940309676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.25, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95223162086588174
 Animator:
   serializedVersion: 3
@@ -1901,7 +1888,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114785173396572888
+--- !u!114 &114607675373315144
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1909,7 +1896,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131315940309676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7941eb8b46caf1144bd0c73c6c888010, type: 3}
+  m_Script: {fileID: 11500000, guid: eae00b4090ac7894184d84a7d2170d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!137 &137804912407509092

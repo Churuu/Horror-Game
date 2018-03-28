@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AICinematicAgent : MonoBehaviour
-{
+public class CinematicAgent : MonoBehaviour {
+
 	Animator _anim;
 	NavMeshAgent agent;
 
@@ -18,5 +18,13 @@ public class AICinematicAgent : MonoBehaviour
     void Update()
     {
 		_anim.SetBool("Walking", agent.velocity.magnitude > 0.1f ? true:false);
+
+		if (!agent.pathPending)
+		{
+			if (agent.remainingDistance < 0.1f)
+			{
+				Destroy(gameObject);
+			}
+		}
     }
 }
