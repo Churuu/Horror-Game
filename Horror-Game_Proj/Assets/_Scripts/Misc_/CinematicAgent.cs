@@ -23,6 +23,7 @@ public class CinematicAgent : MonoBehaviour {
 		{
 			if (agent.remainingDistance < 0.1f)
 			{
+				FindObjectOfType<Ai>().agent.isStopped = false;
 				Destroy(gameObject);
 			}
 		}

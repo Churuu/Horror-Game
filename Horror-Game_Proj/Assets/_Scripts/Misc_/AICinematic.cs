@@ -11,12 +11,7 @@ public class AICinematic : MonoBehaviour
     public Transform targetPoint;
     GameObject _ai;
     NavMeshAgent agent;
-    GameObject realAI;
 
-    void Start()
-    {
-        realAI = FindObjectOfType<Ai>().gameObject;
-    }
 
     void OnTriggerEnter(Collider col)
     {
@@ -30,7 +25,7 @@ public class AICinematic : MonoBehaviour
         _ai = Instantiate(ai, spawnPoint.position, Quaternion.identity);
         agent = _ai.GetComponent<NavMeshAgent>();
         agent.SetDestination(targetPoint.position);
+        FindObjectOfType<Ai>().agent.isStopped = true;
         Destroy(gameObject);
-        realAI.SetActive(false);
     }
 }
