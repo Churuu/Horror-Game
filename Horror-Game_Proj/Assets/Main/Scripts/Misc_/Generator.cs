@@ -5,13 +5,13 @@ using UnityEngine;
 public class Generator : MonoBehaviour 
 {
 
-	GameObject particleSmoke;
+	public GameObject particleSmoke;
 	public bool generatorIsOn = false;
 
 	public void EnableGenerator()
 	{
 		generatorIsOn = true;
-		//particleSmoke.SetActive(true);
+		particleSmoke.SetActive(true);
 	}
 }
 

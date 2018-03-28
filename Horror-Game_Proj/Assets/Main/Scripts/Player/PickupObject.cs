@@ -29,7 +29,7 @@ public class PickupObject : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.E))  //DROP
+        if (Input.GetKeyDown(KeyCode.R))  //DROP
         {
             carriedObject.gameObject.GetComponent<Rigidbody>().drag = 0;
             carrying = false;

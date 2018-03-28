@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1900555371843082}
   m_LocalRotation: {x: -0, y: 0.70710886, z: -0, w: -0.7071048}
-  m_LocalPosition: {x: 5.452136, y: 2.405, z: -2.2838385}
+  m_LocalPosition: {x: 0.28772244, y: 0.943, z: 2.9828472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4556902780830634}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 2
   stamina: 10
-  speed: 5
+  walkSpeed: 1
   crouchSpeed: 0.5
   leaningAngle: 10
   head: {fileID: 4556902780830634}
@@ -349,6 +349,7 @@ MonoBehaviour:
   playerWalking: 0
   headNormalPos: {x: 0, y: 1.5, z: 0}
   headCrouchPos: {x: 0, y: 0.7, z: 0}
+  speed: 5
   flashlight: 1
   crouching: 0
   playerIsStopped: 0
