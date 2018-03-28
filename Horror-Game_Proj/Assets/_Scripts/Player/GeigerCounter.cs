@@ -6,8 +6,9 @@ public class GeigerCounter : MonoBehaviour
 {
     AudioSource audioSrc;
 	public AudioClip geigerClick;
-    public float intervalCycle;
-	public float intervalFrequency;
+    [Range(0, 20)] public float intervalCycle;
+	[Range(0, 20)] public float intervalFrequency;
+    [Range(0.1f, 5)] public float intervalAmplitude;
     float interval;
 
 
@@ -22,7 +23,7 @@ public class GeigerCounter : MonoBehaviour
         if (Time.time > interval)
         {
 			audioSrc.PlayOneShot(geigerClick);
-            interval = Mathf.PerlinNoise(intervalCycle, intervalFrequency) + Time.time;
+            interval = Mathf.PerlinNoise(intervalCycle, intervalFrequency) * intervalAmplitude  + Time.time;
         }
     }
 }
