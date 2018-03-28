@@ -37,7 +37,7 @@ public class AICinematic : MonoBehaviour
             if (agent.remainingDistance <= 0.1f)
             {
 	        	Destroy(_ai, 1);
-				Destroy(this);
+				Destroy(gameObject);
             }
     }
 }
