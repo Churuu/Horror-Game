@@ -19,7 +19,7 @@ public class AICinematic : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player"))
             StartCinematic();
 
     }
@@ -27,17 +27,19 @@ public class AICinematic : MonoBehaviour
     void StartCinematic()
     {
         _ai = Instantiate(ai, spawnPoint, Quaternion.identity);
-		agent.SetDestination(targetPoint);
+        agent.SetDestination(targetPoint);
+        FindObjectOfType<Ai>().gameObject.SetActive(false);
         InvokeRepeating("CheckArrival", 0, Time.deltaTime);
     }
-    
+
     void CheckArrival()
     {
         if (!agent.pathPending)
             if (agent.remainingDistance <= 0.1f)
             {
-	        	Destroy(_ai, 1);
-				Destroy(gameObject);
+                Destroy(_ai, 1);
+                FindObjectOfType<Ai>().gameObject.SetActive(true);
+                Destroy(gameObject);
             }
     }
 }
