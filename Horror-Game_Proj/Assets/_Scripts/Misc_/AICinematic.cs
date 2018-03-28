@@ -12,16 +12,26 @@ public class AICinematic : MonoBehaviour
     GameObject _ai;
     NavMeshAgent agent;
 
-    // Use this for initialization
     void Start()
     {
-        _ai = Instantiate(ai, spawnPoint, Quaternion.identity);
         agent = _ai.GetComponent<NavMeshAgent>();
-		agent.SetDestination(targetPoint);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.CompareTag("Player"))
+            StartCinematic();
+
+    }
+
+    void StartCinematic()
+    {
+        _ai = Instantiate(ai, spawnPoint, Quaternion.identity);
+		agent.SetDestination(targetPoint);
+        InvokeRepeating("CheckArrival", 0, Time.deltaTime);
+    }
+    
+    void CheckArrival()
     {
         if (!agent.pathPending)
             if (agent.remainingDistance <= 0.1f)
