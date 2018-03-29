@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 81084427411337054}
   - component: {fileID: 124262873721958826}
   - component: {fileID: 54723077248861012}
+  - component: {fileID: 114564088430818798}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -55,12 +56,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4969769650945232}
   - component: {fileID: 114401326417527018}
-  - component: {fileID: 54848251820767618}
-  - component: {fileID: 82610532638499424}
   - component: {fileID: 114238983455932176}
   - component: {fileID: 114696260624555908}
-  - component: {fileID: 136852136868904202}
   - component: {fileID: 114461600224521954}
+  - component: {fileID: 114295164642840450}
+  - component: {fileID: 54848251820767618}
+  - component: {fileID: 82610532638499424}
+  - component: {fileID: 136852136868904202}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -102,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1606834721850694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.1, y: 24.6, z: -9.4}
+  m_LocalPosition: {x: 14.88, y: 0.77, z: -19.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4842829273352606}
@@ -133,7 +135,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -272,12 +274,12 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 2.5
   m_Range: 20
-  m_SpotAngle: 43.668858
+  m_SpotAngle: 45
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -291,9 +293,9 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 1.2
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -312,6 +314,22 @@ MonoBehaviour:
   distance: 3
   rayDistance: 3
   playerCam: {fileID: 4842829273352606}
+--- !u!114 &114295164642840450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606834721850694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4890ab4d3e8204aaea967a7ce81a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionImage: {fileID: 0}
+  interactionText: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114401326417527018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,6 +374,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   - {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
+--- !u!114 &114564088430818798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076524941940832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 4641ab967e7dee24e9d7c1a368550ff2, type: 2}
 --- !u!114 &114696260624555908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,9 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a841a411f07f040b2d864e0d1bbd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: []
-  interaction: {fileID: 0}
-  interactionText: {fileID: 0}
+  inventory: []
 --- !u!124 &124262873721958826
 Behaviour:
   m_ObjectHideFlags: 1
