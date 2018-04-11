@@ -58,7 +58,7 @@ public class PickupObject : MonoBehaviour
 
     void Pickup()
     {
-        if (Input.GetKeyDown(KeyCode.E) && carrying == false)
+        if (Input.GetKeyDown(KeyCode.R) && carrying == false)
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;

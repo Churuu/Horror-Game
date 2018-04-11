@@ -31,22 +31,26 @@ public class Interact : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3f, interactable))
         {
-			var name = hit.collider.name;
-            interactionImage.SetActive(true);
+            var name = hit.collider.name;
             switch (hit.collider.tag)
             {
                 case "ObjectiveItem":
                     interactionText.text = "Pickup " + name;
+                    interactionImage.SetActive(true);
                     break;
                 case "Door":
                     interactionText.text = "Open";
+                    interactionImage.SetActive(true);
                     break;
                 case "Generator":
                     interactionText.text = "Turn on";
+                    interactionImage.SetActive(true);
                     break;
                 case "ExitDoor":
                     interactionText.text = "Exit";
+                    interactionImage.SetActive(true);
                     break;
+
             }
         }
     }
