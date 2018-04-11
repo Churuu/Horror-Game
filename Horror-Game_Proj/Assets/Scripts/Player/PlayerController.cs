@@ -40,12 +40,11 @@ public class PlayerController : MonoBehaviour
     private bool leaningLeft;
     private bool leaningRight;
     private bool notLeaning;
-    private bool cursorLocked;
+    private bool cursorLocked = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        LockCursor();
     }
 
     void Update()
@@ -55,7 +54,6 @@ public class PlayerController : MonoBehaviour
         Stamina();
         Crouching();
         Lean();
-        CursorHandler();
     }
 
 
@@ -65,32 +63,6 @@ public class PlayerController : MonoBehaviour
         PlayerWalking();
     }
 
-    void CursorHandler()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (cursorLocked)
-                UnlockCursor();
-            else
-                LockCursor();
-        }
-    }
-
-    public void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        cursorLocked = true;
-
-    }
-
-    public void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        cursorLocked = false;
-
-    }
 
     // Allows the player to look around
     void MouseController()
