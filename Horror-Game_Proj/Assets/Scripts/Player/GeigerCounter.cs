@@ -26,7 +26,6 @@ public class GeigerCounter : MonoBehaviour
     {
         float distance = Vector3.Distance(player.transform.position, target.transform.position) * .1f;
         intervalAmplitude = distance;
-        print(distance);
 
         if (Time.time > interval)
         {
