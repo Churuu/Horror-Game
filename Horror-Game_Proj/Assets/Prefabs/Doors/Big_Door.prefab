@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65509743756989658}
   - component: {fileID: 208122293292767220}
   m_Layer: 8
-  m_Name: Open
+  m_Name: pCube11
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 65397363313669664}
   - component: {fileID: 208826431164517676}
   m_Layer: 8
-  m_Name: Open
+  m_Name: pCube12
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020e36b4fe8a4b14ca827db4a63cd17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Key: {fileID: 0}
+  key: {fileID: 0}
 --- !u!208 &208122293292767220
 NavMeshObstacle:
   m_ObjectHideFlags: 1

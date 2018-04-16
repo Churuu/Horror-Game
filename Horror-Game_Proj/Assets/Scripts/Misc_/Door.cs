@@ -10,6 +10,5 @@ public class Door : MonoBehaviour
     public void UnlockDoor()
     {
         GetComponent<Animator>().SetTrigger("OpenDoor");
-        print("Door unlocked");
     }
 }
