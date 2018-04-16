@@ -17,7 +17,7 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public Image fade;
-    public AudioClip[] laugh;
+    public AudioClip[] sounds; // 0 Walking, 
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -34,6 +34,9 @@ public class Ai : MonoBehaviour
     private bool patrollingRoom;
     private Animator _anim;
     private GameObject[] roomHolder;
+    private float stepCycle = .7f;
+    private float stepCycleCounter;
+    private AudioSource src;
 
 
 
@@ -45,6 +48,9 @@ public class Ai : MonoBehaviour
         roomHolder = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
+        stepCycleCounter = Time.time + stepCycle;
+        src = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -53,6 +59,7 @@ public class Ai : MonoBehaviour
         AnimationHandler();
         StateHandler();
         Kill();
+        StepSound();
     }
 
     void StateHandler()
@@ -229,7 +236,18 @@ public class Ai : MonoBehaviour
         float target = Mathf.Clamp01(distance);
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
-        if(target == 1)
+        if (target == 1)
             player.transform.position = new Vector3(16, 2, -22);
+    }
+
+
+
+    void StepSound()
+    {
+        if (Time.time > stepCycleCounter && agent.velocity.magnitude > 0)
+        {
+            stepCycleCounter = Time.time + stepCycle;
+            src.PlayOneShot(sounds[0], 1);
+        }
     }
 }

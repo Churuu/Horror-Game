@@ -44,7 +44,7 @@ public class StepSound : MonoBehaviour
 
 	void StepWalkingSound()
 	{
-		if(playerController.playerWalking && Time.time > stepCycleCounter)
+		if(playerController.playerWalking && Time.time > stepCycleCounter && playerController.grounded())
 		{
 			stepCycleCounter = Time.time + stepCycle;
 			int n = Random.Range(1, clips.Length);
