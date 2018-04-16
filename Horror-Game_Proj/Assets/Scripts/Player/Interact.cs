@@ -70,8 +70,10 @@ public class Interact : MonoBehaviour
                         break;
                     case "Door":
                         var _door = hit.collider.transform.parent.GetComponent<Door>();
-                        if (playerInventory.Contains(_door.Key))
+                        if (playerInventory.Contains(_door.key))
                             _door.UnlockDoor();
+                        else
+                            FindObjectOfType<HintBox>().Hint("The door is locked");
                         break;
                     case "Generator":
                         FindObjectOfType<Generator>().EnableGenerator();
