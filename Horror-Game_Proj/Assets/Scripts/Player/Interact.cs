@@ -82,6 +82,10 @@ public class Interact : MonoBehaviour
                         if (FindObjectOfType<Generator>().generatorIsOn)
                             GameManager.instance.EndGame();
                         break;
+                    case "Valve":
+                        hit.collider.gameObject.GetComponent<Valve>().TurnValve();
+                    break;
+
                 }
             }
         }
