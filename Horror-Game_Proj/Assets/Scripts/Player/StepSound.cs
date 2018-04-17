@@ -6,13 +6,13 @@ public class StepSound : MonoBehaviour
 {
 	public float standingStepCycle;
 	public float crouchingStepCycle;
+	public AudioClip[] clips;
 
 	PlayerController playerController;
 	AudioSource src;
 	float stepCycle = 0.5f;
 	float stepCycleCounter;
 
-	public AudioClip[] clips;
 
 	void Start()
 	{
