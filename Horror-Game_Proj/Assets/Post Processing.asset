@@ -134,9 +134,9 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 1, g: 0.6523232, b: 0.57391715, a: 0}
-          power: {r: 0.6032503, g: 0.8811793, b: 1, a: 0}
-          offset: {r: 1, g: 0.91426283, b: 0.8539597, a: 0}
+          slope: {r: 0.486094, g: 1, b: 0, a: 0}
+          power: {r: 0.47272372, g: 1, b: 0, a: 0}
+          offset: {r: 0.46985435, g: 1, b: 0, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -279,7 +279,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       lut: {fileID: 2800000, guid: 137ae495153d2c446bc51b17b3af0143, type: 3}
-      contribution: 0.938
+      contribution: 1
   chromaticAberration:
     m_Enabled: 0
     m_Settings:
