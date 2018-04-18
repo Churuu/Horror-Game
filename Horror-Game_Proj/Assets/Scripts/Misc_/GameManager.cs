@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void EndGame()
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void SwitchScene()
     {
-        FindObjectOfType<PlayerController>().UnlockCursor();
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(sceneToSwitch);
     }
 }
