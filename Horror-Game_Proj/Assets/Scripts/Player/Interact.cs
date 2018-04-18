@@ -10,6 +10,8 @@ public class Interact : MonoBehaviour
     public GameObject interactionImage;
     public Text interactionText;
     public LayerMask interactable;
+    public AudioClip[] pickupSound; // 0 Items, 1 Keys
+
     private PlayerInventory playerInventory;
 
     void Start()
@@ -66,12 +68,18 @@ public class Interact : MonoBehaviour
                 {
                     case "ObjectiveItem":
                         playerInventory.Add(hit.collider.gameObject);
+                        GetComponent<AudioSource>().PlayOneShot(pickupSound[Random.Range(0, 2)]);
                         Destroy(hit.collider.gameObject);
                         break;
                     case "Door":
                         var _door = hit.collider.transform.parent.GetComponent<Door>();
-                        if (playerInventory.Contains(_door.Key))
+                        if (playerInventory.Contains(_door.key))
                             _door.UnlockDoor();
+                        else
+                        {
+                            FindObjectOfType<HintBox>().Hint("The door is locked");
+                            _door.DoorLocked();
+                        }
                         break;
                     case "Generator":
                         FindObjectOfType<Generator>().EnableGenerator();
@@ -80,6 +88,10 @@ public class Interact : MonoBehaviour
                         if (FindObjectOfType<Generator>().generatorIsOn)
                             GameManager.instance.EndGame();
                         break;
+                    case "Valve":
+                        hit.collider.gameObject.GetComponent<Valve>().TurnValve();
+                        break;
+
                 }
             }
         }

@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float crouchSpeed;
     public float leaningAngle;
+    public float jumpForce;
     public Transform head;
     public GameObject cellphone;
     public bool playerWalking = false;
     public Vector3 headNormalPos;
     public Vector3 headCrouchPos;
+    public LayerMask ground;
+    public AudioClip jumpSound;
+    public AudioClip landSound;
     [HideInInspector] public float speed;
     [HideInInspector] public bool flashlight = true;
     [HideInInspector] public bool crouching;
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
         Stamina();
         Crouching();
         Lean();
+        Jump();
     }
 
 
@@ -223,9 +228,28 @@ public class PlayerController : MonoBehaviour
             cellphone.GetComponent<Light>().enabled = false;
     }
 
+    private void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && grounded())
+        {
+            rb.AddForce(Vector3.up * jumpForce);
+            GetComponent<AudioSource>().PlayOneShot(jumpSound);
+        }
+    }
+
+    public bool grounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, 1, ground))
+            return true;
+        else
+            return false;
+    }
+
     void onCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ai")
             FindObjectOfType<QuickSaveSystem>().Load();
+        if(other.gameObject != null && Physics.Raycast(transform.position, Vector3.down))
+            GetComponent<AudioSource>().PlayOneShot(landSound);
     }
 }

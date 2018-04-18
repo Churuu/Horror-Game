@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1606834721850694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.88, y: 0.77, z: -19.05}
+  m_LocalPosition: {x: 11.76, y: 1.13, z: 6.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4842829273352606}
@@ -119,7 +119,7 @@ Camera:
   m_GameObject: {fileID: 1076524941940832}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -136,12 +136,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 1
+  m_HDR: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -195,13 +195,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.139
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 189
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -233,7 +233,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -251,7 +251,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -270,17 +270,17 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145646431845448}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 1
   m_Range: 20
   m_SpotAngle: 45
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
-    m_Resolution: -1
+    m_Type: 2
+    m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -293,9 +293,9 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1.2
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -327,9 +327,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionImage: {fileID: 0}
   interactionText: {fileID: 0}
-  layerMask:
+  interactable:
     serializedVersion: 2
     m_Bits: 256
+  pickupSound:
+  - {fileID: 8300000, guid: e600a55c92313bd42931ffc36540b982, type: 3}
+  - {fileID: 8300000, guid: 30564f95271c99241859f033ce1d9fe4, type: 3}
 --- !u!114 &114401326417527018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,11 +349,17 @@ MonoBehaviour:
   walkSpeed: 3
   crouchSpeed: 1.5
   leaningAngle: 10
+  jumpForce: 300
   head: {fileID: 4842829273352606}
   cellphone: {fileID: 1145646431845448}
   playerWalking: 0
   headNormalPos: {x: 0, y: 1.5, z: 0}
   headCrouchPos: {x: 0, y: 0.7, z: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 512
+  jumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  landSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   speed: 5
   flashlight: 1
   crouching: 0

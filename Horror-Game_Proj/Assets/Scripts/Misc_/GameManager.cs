@@ -10,11 +10,23 @@ public class GameManager : MonoBehaviour
     public string sceneToSwitch;
     public AnimationClip fadeAnimation;
     public Animator _anim;
+    bool locked = true;
 
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            locked = !locked;
+
+        if (locked)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void EndGame()
