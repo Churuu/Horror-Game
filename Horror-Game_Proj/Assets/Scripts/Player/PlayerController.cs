@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody rb;
-    private float y = 0;
+    private float y;
     private float x = 0;
     private float maxStamina = 10.0f;
     private float staminaRegenTimer = 0.0f;
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        y = transform.eulerAngles.y;
     }
 
     void Update()
