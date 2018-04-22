@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4804968224022746}
   - component: {fileID: 33386939551091684}
   - component: {fileID: 23830398087054970}
-  - component: {fileID: 65309152111196472}
+  - component: {fileID: 64043342911532940}
   m_Layer: 0
   m_Name: wall_decals_2
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819460032015496}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.9, y: 0.193058, z: 30.18}
+  m_LocalPosition: {x: 1.2356, y: -0.0014956, z: -39.339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819460032015496}
   m_Mesh: {fileID: 4300000, guid: c1931caedb253644bb621cd20de50ebc, type: 3}
---- !u!65 &65309152111196472
-BoxCollider:
+--- !u!64 &64043342911532940
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -94,6 +94,8 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10.177782, y: 4.060613, z: 0.81880033}
-  m_Center: {x: -5.088891, y: 2.0303066, z: -0.23606092}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c1931caedb253644bb621cd20de50ebc, type: 3}
