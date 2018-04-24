@@ -745,8 +745,8 @@ MonoBehaviour:
   crouchSpeed: 1.5
   leaningAngle: 10
   jumpForce: 300
-  playerHeight: 1.7
-  crouchHeight: 0.5
+  playerHeight: 2
+  crouchHeight: 1
   flashlight: 0
   head: {fileID: 4842829273352606}
   cellphone: {fileID: 1145646431845448}
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_NVColor: {r: 0, g: 1, b: 0.1724138, a: 0}
   m_TargetBleachColor: {r: 1, g: 1, b: 1, a: 0}
   m_baseLightingContribution: 0.1
-  m_LightSensitivityMultiplier: 100
+  m_LightSensitivityMultiplier: 10
   useVignetting: 0
 --- !u!114 &114922362680080950
 MonoBehaviour:
@@ -876,6 +876,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.8
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
