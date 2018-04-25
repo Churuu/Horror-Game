@@ -202,20 +202,20 @@ public class PlayerController : MonoBehaviour
         if (crouching)
         {
             speed = crouchSpeed;
-            col.height = Mathf.Lerp(col.height, 1, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, crouchHeight, head.localPosition.z), 0.1f);
+            col.height = Mathf.Lerp(col.height, crouchHeight, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, crouchHeight - 0.5f, head.localPosition.z), 0.1f);
         }
         else if (!crouching && !playerIsRunning)
         {
             speed = walkSpeed;
-            col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight, head.localPosition.z), 0.1f);
+            col.height = Mathf.Lerp(col.height, playerHeight, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight - 1, head.localPosition.z), 0.1f);
         }
         else if (!crouching && playerIsRunning && !playerTired)
         {
             speed = runspeed;
-            col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight, head.localPosition.z), 0.1f);
+            col.height = Mathf.Lerp(col.height, playerHeight, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight - 1, head.localPosition.z), 0.1f);
         }
     }
     private void Flashlight()
