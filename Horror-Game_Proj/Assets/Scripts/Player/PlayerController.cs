@@ -12,16 +12,16 @@ public class PlayerController : MonoBehaviour
     public float crouchSpeed;
     public float leaningAngle;
     public float jumpForce;
+    public float playerHeight;
+    public float crouchHeight;
+    public bool flashlight = false;
     public Transform head;
     public GameObject cellphone;
-    public bool playerWalking = false;
-    public Vector3 headNormalPos;
-    public Vector3 headCrouchPos;
-    public LayerMask ground;
     public AudioClip jumpSound;
     public AudioClip landSound;
+    public LayerMask ground;
     [HideInInspector] public float speed;
-    [HideInInspector] public bool flashlight = true;
+    [HideInInspector] public bool playerWalking = false;
     [HideInInspector] public bool crouching;
     [HideInInspector] public bool playerIsStopped;
     [HideInInspector] public bool playerIsRunning;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MouseController();
-        Flashlight();
+        //Flashlight();
         Stamina();
         Crouching();
         Lean();
@@ -203,19 +203,19 @@ public class PlayerController : MonoBehaviour
         {
             speed = crouchSpeed;
             col.height = Mathf.Lerp(col.height, 1, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, headCrouchPos, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, crouchHeight, head.localPosition.z), 0.1f);
         }
         else if (!crouching && !playerIsRunning)
         {
             speed = walkSpeed;
             col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, headNormalPos, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight, head.localPosition.z), 0.1f);
         }
         else if (!crouching && playerIsRunning && !playerTired)
         {
             speed = runspeed;
             col.height = Mathf.Lerp(col.height, 1.8f, 0.1f);
-            head.localPosition = Vector3.Lerp(head.localPosition, headNormalPos, 0.1f);
+            head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(head.localPosition.x, playerHeight, head.localPosition.z), 0.1f);
         }
     }
     private void Flashlight()
