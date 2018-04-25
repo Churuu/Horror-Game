@@ -23,14 +23,17 @@ public class PhoneBob : MonoBehaviour
 
     void Update()
     {
-        bobbing();
-        Sway();
+        if (!FindObjectOfType<NightVision>().visionEnabled)
+        {
+            Sway();
+            bobbing();
+        }
     }
 
 
     void bobbing()
     {
-        anim.SetBool("IsMoving", playerController.playerWalking); 
+        anim.SetBool("IsMoving", playerController.playerWalking);
 
         if (playerController.crouching)
             anim.speed = 0.5f;

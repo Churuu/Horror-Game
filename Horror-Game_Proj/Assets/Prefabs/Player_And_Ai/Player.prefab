@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 124457642883663828}
   - component: {fileID: 114894900401226114}
   m_Layer: 10
-  m_Name: Camera
+  m_Name: NVCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,12 +147,12 @@ GameObject:
   - component: {fileID: 33980475976610192}
   - component: {fileID: 23609296765997128}
   m_Layer: 11
-  m_Name: Plane
+  m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1901574303939234
 GameObject:
   m_ObjectHideFlags: 1
@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 23253764425017876}
   - component: {fileID: 95725065764965904}
   - component: {fileID: 114922362680080950}
+  - component: {fileID: 114581361833411648}
   m_Layer: 10
   m_Name: Cellphone
   m_TagString: Untagged
@@ -179,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129488553366152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0319, z: -0}
+  m_LocalPosition: {x: 0.4, y: 0.0133, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4348510265882798}
@@ -205,14 +206,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839264042044142}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0021, y: -0.0012, z: 0.00614}
-  m_LocalScale: {x: 0.002404336, y: 1, z: 0.0031913782}
+  m_LocalRotation: {x: 0.49999997, y: -0.49999997, z: -0.5000001, w: 0.5}
+  m_LocalPosition: {x: -0.00176, y: -0.00145, z: 0.00621}
+  m_LocalScale: {x: 0.0032521803, y: 1, z: 0.0023855742}
   m_Children:
   - {fileID: 4132561617486662}
   m_Father: {fileID: 4399711243413420}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 89.99999, z: 89.99999}
 --- !u!4 &4399711243413420
 Transform:
   m_ObjectHideFlags: 1
@@ -349,7 +350,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -632,8 +633,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 0.52650356
+  m_Intensity: 5
+  m_Range: 0.4
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -744,8 +745,8 @@ MonoBehaviour:
   crouchSpeed: 1.5
   leaningAngle: 10
   jumpForce: 300
-  playerHeight: 1.7
-  crouchHeight: 0.5
+  playerHeight: 2
+  crouchHeight: 1
   flashlight: 0
   head: {fileID: 4842829273352606}
   cellphone: {fileID: 1145646431845448}
@@ -789,6 +790,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 4641ab967e7dee24e9d7c1a368550ff2, type: 2}
+--- !u!114 &114581361833411648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901574303939234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848fbef211913c141845fef7065476cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionEnabled: 0
+  deferredNightVisionEffect: {fileID: 114894900401226114}
+  screen: {fileID: 1839264042044142}
 --- !u!114 &114696260624555908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -807,7 +822,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743079170823298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42241c33e76d45b43a440dfb487cdaef, type: 3}
   m_Name: 
@@ -815,7 +830,7 @@ MonoBehaviour:
   m_NVColor: {r: 0, g: 1, b: 0.1724138, a: 0}
   m_TargetBleachColor: {r: 1, g: 1, b: 1, a: 0}
   m_baseLightingContribution: 0.1
-  m_LightSensitivityMultiplier: 100
+  m_LightSensitivityMultiplier: 10
   useVignetting: 0
 --- !u!114 &114922362680080950
 MonoBehaviour:
@@ -861,6 +876,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.8
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
