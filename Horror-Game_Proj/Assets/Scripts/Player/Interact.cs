@@ -10,6 +10,7 @@ public class Interact : MonoBehaviour
     public GameObject interactionImage;
     public Text interactionText;
     public LayerMask interactable;
+    public LayerMask ignorePlayer;
     public AudioClip[] pickupSound; // 0 Items, 1 Keys
 
     private PlayerInventory playerInventory;
@@ -31,7 +32,7 @@ public class Interact : MonoBehaviour
         interactionText.text = "";
 
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3f, interactable))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, interactable))
         {
             var name = hit.collider.name;
             switch (hit.collider.tag)
@@ -62,7 +63,7 @@ public class Interact : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Interaction"))
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3f))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, ignorePlayer))
             {
                 switch (hit.collider.tag)
                 {
