@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
     public bool grounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 1, ground))
+        if (Physics.Raycast(transform.position, Vector3.down, playerHeight / 2, ground))
             return true;
         else
             return false;
