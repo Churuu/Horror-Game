@@ -38,6 +38,7 @@ public class Ai : MonoBehaviour
     private float stepCycleCounter;
     private float soundCycleCounter;
     private AudioSource src;
+    private Vector3 playerStartingPos;
 
 
 
@@ -52,6 +53,7 @@ public class Ai : MonoBehaviour
         stepCycleCounter = Time.time + stepCycle;
         soundCycleCounter = Time.time + UnityEngine.Random.Range(30, 300);
         src = GetComponent<AudioSource>();
+        playerStartingPos = player.transform.position;
 
     }
 
@@ -235,8 +237,8 @@ public class Ai : MonoBehaviour
         float target = Mathf.Clamp01(distance);
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
-        if (target <= 0.9f)
-            player.transform.position = new Vector3(16, 2, -22);
+        if (target >= 0.9f)
+            player.transform.position = playerStartingPos;
     }
 
 
