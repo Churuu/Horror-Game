@@ -235,7 +235,7 @@ public class Ai : MonoBehaviour
         float target = Mathf.Clamp01(distance);
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
-        if (target == 1)
+        if (target <= 0.9f)
             player.transform.position = new Vector3(16, 2, -22);
     }
 
