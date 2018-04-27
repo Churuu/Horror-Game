@@ -149,8 +149,11 @@ public class Ai : MonoBehaviour
     {
         if (!patrollingRoom)
         {
-            if(rooms.Length == 0)
+            if (rooms.Length == 0)
+            {
                 Debug.LogError("AI'n har inga rum att gå till, skapa ett rum för monstret att gå till! Kom ihåg att du måste dra in de rum den ska gå till också på monstret");
+                return;
+            }
             room = rooms[UnityEngine.Random.Range(0, rooms.Length)];
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
             if (!Physics.CheckSphere(AiDestination, 0.3f))
