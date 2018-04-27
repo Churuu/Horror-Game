@@ -8,7 +8,7 @@ public class Paper : MonoBehaviour
     public Image paper;
     public void ShowPaper()
     {
-        paper.enabled = true;
+        paper.gameObject.SetActive(true);
         gameObject.SetActive(false);
         InvokeRepeating("HidePaper", 0, Time.deltaTime);
     }
@@ -17,7 +17,7 @@ public class Paper : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            paper.enabled = false;
+            paper.gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
