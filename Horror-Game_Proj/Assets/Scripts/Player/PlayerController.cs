@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MouseController();
-        //Flashlight();
+        Flashlight();
         Stamina();
         Crouching();
         Lean();
