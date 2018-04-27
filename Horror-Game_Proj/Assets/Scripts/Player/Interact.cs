@@ -53,7 +53,10 @@ public class Interact : MonoBehaviour
                     interactionText.text = "Exit";
                     interactionImage.SetActive(true);
                     break;
-
+                case "Paper":
+                    interactionText.text = "Paper";
+                    interactionImage.SetActive(true);
+                    break;
             }
         }
     }
@@ -92,7 +95,9 @@ public class Interact : MonoBehaviour
                     case "Valve":
                         hit.collider.gameObject.GetComponent<Valve>().TurnValve();
                         break;
-
+                    case "Paper":
+                        hit.collider.GetComponent<Paper>().ShowPaper();
+                        break;
                 }
             }
         }
