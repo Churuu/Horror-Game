@@ -3112,6 +3112,26 @@ Prefab:
       propertyPath: pickupSound.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 31fd9ade77677e740b1b5e7d291ed80f, type: 3}
+    - target: {fileID: 114581361833411648, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_SpotAngle
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc432fe758e89e459dc57a4c35ad1a4, type: 2}
   m_IsPrefabParent: 0
@@ -14757,15 +14777,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4581784728708260, guid: 1e5d78a930a44f445a5affe1fd7e3e93, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.4018757
       objectReference: {fileID: 0}
     - target: {fileID: 4581784728708260, guid: 1e5d78a930a44f445a5affe1fd7e3e93, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.4018755
       objectReference: {fileID: 0}
     - target: {fileID: 4581784728708260, guid: 1e5d78a930a44f445a5affe1fd7e3e93, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.4018755
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e5d78a930a44f445a5affe1fd7e3e93, type: 2}
@@ -16610,21 +16630,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
   m_PrefabInternal: {fileID: 867928029}
---- !u!54 &317537102
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 317537101}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &317537105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
@@ -41222,15 +41227,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.972
+      value: -1.233
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.166
+      value: -22.285
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.717
+      value: 35.327
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a7fc42425a9e434cb5feaf9c6cb00b0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -72730,7 +72735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595ddba75be32304b98247e17a4755b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: I can use my nightvision in darkplaces by pressing F
+  message: I can use my flashlight in darkplaces by pressing F
 --- !u!65 &1592403296
 BoxCollider:
   m_ObjectHideFlags: 0
