@@ -3112,6 +3112,11 @@ Prefab:
       propertyPath: pickupSound.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 31fd9ade77677e740b1b5e7d291ed80f, type: 3}
+    - target: {fileID: 114401326417527018, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: jumpForce
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc432fe758e89e459dc57a4c35ad1a4, type: 2}
   m_IsPrefabParent: 0
@@ -7878,7 +7883,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 4.7
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -16315,7 +16320,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 4.93
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -47076,7 +47081,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 4.7
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -59073,7 +59078,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 10.338875
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -70572,7 +70577,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 4.7
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -73937,7 +73942,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2
   m_Range: 4.7
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -85239,7 +85244,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2
   m_Range: 11.593088
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -92019,7 +92024,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.67058825, g: 0.8627451, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 10.480484
   m_SpotAngle: 30
   m_CookieSize: 10
