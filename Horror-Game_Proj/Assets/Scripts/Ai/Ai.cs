@@ -18,6 +18,7 @@ public class Ai : MonoBehaviour
     [Range(100, 180)] public int fieldOfViewAngle;
     public Image fade;
     public AudioClip[] sounds; // 0 Walking, 1 Scary angry sound
+    public GameObject[] rooms;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -33,7 +34,6 @@ public class Ai : MonoBehaviour
     private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
     private Animator _anim;
-    private GameObject[] roomHolder;
     private float stepCycle = .7f;
     private float stepCycleCounter;
     private float soundCycleCounter;
@@ -47,7 +47,7 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        roomHolder = GameObject.FindGameObjectsWithTag("Room");
+        //rooms = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
         stepCycleCounter = Time.time + stepCycle;
@@ -149,7 +149,9 @@ public class Ai : MonoBehaviour
     {
         if (!patrollingRoom)
         {
-            room = roomHolder[UnityEngine.Random.Range(0, roomHolder.Length)];
+            if(rooms.Length == 0)
+                Debug.LogError("AI'n har inga rum att gå till, skapa ett rum för monstret att gå till! Kom ihåg att du måste dra in de rum den ska gå till också på monstret");
+            room = rooms[UnityEngine.Random.Range(0, rooms.Length)];
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
             if (!Physics.CheckSphere(AiDestination, 0.3f))
             {
