@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour
     public GameObject interactionImage;
     public Text interactionText;
     public LayerMask interactable;
-    public LayerMask ignorePlayer;
+    public LayerMask ignoredLayer;
     public AudioClip[] pickupSound; // 0 Items, 1 Keys
 
     private PlayerInventory playerInventory;
@@ -66,8 +66,9 @@ public class Interact : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Interaction"))
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, ignorePlayer))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, ignoredLayer))
             {
+                print(hit.collider.name);
                 switch (hit.collider.tag)
                 {
                     case "ObjectiveItem":

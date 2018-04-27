@@ -55,9 +55,9 @@ LightmapSettings:
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
-    m_Resolution: 2
-    m_BakeResolution: 40
-    m_TextureWidth: 1024
+    m_Resolution: 1
+    m_BakeResolution: 20
+    m_TextureWidth: 512
     m_TextureHeight: 1024
     m_AO: 0
     m_AOMaxDistance: 1
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112001754, guid: c42fafb36ea70374fbdc40115637cdbf,
+  m_LightingDataAsset: {fileID: 112000854, guid: c42fafb36ea70374fbdc40115637cdbf,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -3116,6 +3116,26 @@ Prefab:
         type: 2}
       propertyPath: jumpForce
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295164642840450, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: ignoredLayer.m_Bits
+      value: 4294963195
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_SpotAngle
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_Range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 108534478355886128, guid: 5fc432fe758e89e459dc57a4c35ad1a4,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc432fe758e89e459dc57a4c35ad1a4, type: 2}
@@ -6236,7 +6256,7 @@ GameObject:
   - component: {fileID: 123373605}
   - component: {fileID: 123373604}
   - component: {fileID: 123373603}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8715,7 +8735,7 @@ GameObject:
   - component: {fileID: 177831754}
   - component: {fileID: 177831753}
   - component: {fileID: 177831752}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,8 +9819,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0012512412}
-  m_SizeDelta: {x: 1920, y: 799.8}
+  m_AnchoredPosition: {x: 3.3001, y: 1.7}
+  m_SizeDelta: {x: 2349.3, y: 1291.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &192940559
 MonoBehaviour:
@@ -18807,7 +18827,7 @@ GameObject:
   - component: {fileID: 368955058}
   - component: {fileID: 368955057}
   - component: {fileID: 368955056}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20153,7 +20173,7 @@ GameObject:
   - component: {fileID: 396775061}
   - component: {fileID: 396775060}
   - component: {fileID: 396775059}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31188,7 +31208,7 @@ GameObject:
   - component: {fileID: 645629168}
   - component: {fileID: 645629167}
   - component: {fileID: 645629166}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68049,7 +68069,7 @@ GameObject:
   - component: {fileID: 1498541489}
   - component: {fileID: 1498541488}
   - component: {fileID: 1498541487}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70895,7 +70915,7 @@ GameObject:
   - component: {fileID: 1555636331}
   - component: {fileID: 1555636330}
   - component: {fileID: 1555636329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72717,7 +72737,7 @@ GameObject:
   - component: {fileID: 1592403297}
   - component: {fileID: 1592403296}
   - component: {fileID: 1592403295}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72735,7 +72755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595ddba75be32304b98247e17a4755b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: I can use my nightvision in darkplaces by pressing F
+  message: I can use my flashlight in darkplaces by pressing F
 --- !u!65 &1592403296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90947,7 +90967,7 @@ GameObject:
   - component: {fileID: 2011666999}
   - component: {fileID: 2011666998}
   - component: {fileID: 2011666997}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95642,7 +95662,7 @@ GameObject:
   - component: {fileID: 2092581975}
   - component: {fileID: 2092581974}
   - component: {fileID: 2092581973}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hint_Trigger_1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
