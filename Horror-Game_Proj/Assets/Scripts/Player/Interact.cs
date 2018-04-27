@@ -81,7 +81,7 @@ public class Interact : MonoBehaviour
                             _door.UnlockDoor();
                         else
                         {
-                            FindObjectOfType<HintBox>().Hint("The door is locked");
+                            FindObjectOfType<HintBox>().Hint("The door is locked i need to find a key or something..");
                             _door.DoorLocked();
                         }
                         break;
