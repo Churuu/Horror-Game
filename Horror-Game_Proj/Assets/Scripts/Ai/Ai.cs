@@ -261,7 +261,7 @@ public class Ai : MonoBehaviour
         if (Time.time > soundCycleCounter)
         {
             soundCycleCounter = Time.time + UnityEngine.Random.Range(30, 300);
-            src.PlayOneShot(sounds[UnityEngine.Random.Range(1, 4)], 1);
+            src.PlayOneShot(sounds[UnityEngine.Random.Range(1, 2)], 1);
         }
     }
 }
