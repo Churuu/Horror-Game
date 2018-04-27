@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
     public string sceneToSwitch;
     public AnimationClip fadeAnimation;
     public Animator _anim;
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void SwitchScene()
     {
-        Cursor.lockState = CursorLockMode.None;
+        locked = false;
         SceneManager.LoadScene(sceneToSwitch);
     }
 }

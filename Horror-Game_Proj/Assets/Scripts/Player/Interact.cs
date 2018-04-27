@@ -90,7 +90,7 @@ public class Interact : MonoBehaviour
                         break;
                     case "ExitDoor":
                         if (FindObjectOfType<Generator>().generatorIsOn)
-                            GameManager.instance.EndGame();
+                            FindObjectOfType<GameManager>().EndGame();
                         break;
                     case "Valve":
                         hit.collider.gameObject.GetComponent<Valve>().TurnValve();
