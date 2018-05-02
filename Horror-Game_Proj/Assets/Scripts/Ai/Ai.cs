@@ -19,7 +19,6 @@ public class Ai : MonoBehaviour
     public Image fade;
     public AudioClip detectionSound;
     public AudioClip[] sounds; // 0 Walking, 1 Scary angry sound
-    public GameObject[] rooms;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -28,6 +27,7 @@ public class Ai : MonoBehaviour
     [HideInInspector] public bool playerHiding = false;
 
 
+    private GameObject[] rooms;
     private GameObject player;
     private GameObject room;
     private Vector3 AiDestination;
@@ -49,7 +49,7 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //rooms = GameObject.FindGameObjectsWithTag("Room");
+        rooms = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
         stepCycleCounter = Time.time + stepCycle;
