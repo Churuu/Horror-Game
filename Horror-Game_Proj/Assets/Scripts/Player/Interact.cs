@@ -28,7 +28,6 @@ public class Interact : MonoBehaviour
 
     private void ShowInformationOnScreen()
     {
-        interactionImage.SetActive(false);
         interactionText.text = "";
 
         RaycastHit hit;
