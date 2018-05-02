@@ -17,6 +17,7 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public Image fade;
+    public AudioClip detectionSound;
     public AudioClip[] sounds; // 0 Walking, 1 Scary angry sound
     public GameObject[] rooms;
     [HideInInspector] public List<Transform> aiPointToPatrol;
@@ -33,6 +34,7 @@ public class Ai : MonoBehaviour
     private int patrollingPoint = 0;
     private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
+    private bool firstDetection;
     private Animator _anim;
     private float stepCycle = .7f;
     private float stepCycleCounter;
@@ -117,6 +119,12 @@ public class Ai : MonoBehaviour
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
                     state = AiState.chasePlayer;
+
+                    if(firstDetection)
+                    {
+                        firstDetection = false;
+                        src.PlayOneShot(detectionSound);
+                    }
                 }
             }
         }
@@ -142,7 +150,10 @@ public class Ai : MonoBehaviour
 
         if (!agent.pathPending)
             if (agent.remainingDistance <= 0.1f)
+            {
+                firstDetection = true;
                 Invoke("ReturnToRoomPatrol", 1);
+            }
     }
 
     public void PatrolRoom()

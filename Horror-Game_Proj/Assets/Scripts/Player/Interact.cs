@@ -39,23 +39,18 @@ public class Interact : MonoBehaviour
             {
                 case "ObjectiveItem":
                     interactionText.text = "Pickup " + name;
-                    interactionImage.SetActive(true);
                     break;
                 case "Door":
                     interactionText.text = "Open";
-                    interactionImage.SetActive(true);
                     break;
                 case "Generator":
                     interactionText.text = "Turn on";
-                    interactionImage.SetActive(true);
                     break;
                 case "ExitDoor":
                     interactionText.text = "Exit";
-                    interactionImage.SetActive(true);
                     break;
                 case "Paper":
                     interactionText.text = "Paper";
-                    interactionImage.SetActive(true);
                     break;
             }
         }
