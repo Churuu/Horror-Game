@@ -34,7 +34,7 @@ public class Ai : MonoBehaviour
     private int patrollingPoint = 0;
     private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
-    private bool firstDetection;
+    private bool firstDetection = true;
     private Animator _anim;
     private float stepCycle = .7f;
     private float stepCycleCounter;
@@ -254,7 +254,9 @@ public class Ai : MonoBehaviour
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
         if (target >= 0.9f)
-            player.transform.position = playerStartingPos;
+        {
+            FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
+        }
     }
 
 
