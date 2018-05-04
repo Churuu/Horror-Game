@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour
     public GameObject interactionImage;
     public Text interactionText;
     public LayerMask interactable;
-    public LayerMask ignorePlayer;
+    public LayerMask ignoredLayer;
     public AudioClip[] pickupSound; // 0 Items, 1 Keys
 
     private PlayerInventory playerInventory;
@@ -28,7 +28,6 @@ public class Interact : MonoBehaviour
 
     private void ShowInformationOnScreen()
     {
-        interactionImage.SetActive(false);
         interactionText.text = "";
 
         RaycastHit hit;
@@ -39,21 +38,19 @@ public class Interact : MonoBehaviour
             {
                 case "ObjectiveItem":
                     interactionText.text = "Pickup " + name;
-                    interactionImage.SetActive(true);
                     break;
                 case "Door":
                     interactionText.text = "Open";
-                    interactionImage.SetActive(true);
                     break;
                 case "Generator":
                     interactionText.text = "Turn on";
-                    interactionImage.SetActive(true);
                     break;
                 case "ExitDoor":
                     interactionText.text = "Exit";
-                    interactionImage.SetActive(true);
                     break;
-
+                case "Paper":
+                    interactionText.text = "Paper";
+                    break;
             }
         }
     }
@@ -63,8 +60,9 @@ public class Interact : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Interaction"))
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, ignorePlayer))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 4f, ignoredLayer))
             {
+                print(hit.collider.name);
                 switch (hit.collider.tag)
                 {
                     case "ObjectiveItem":
@@ -78,7 +76,7 @@ public class Interact : MonoBehaviour
                             _door.UnlockDoor();
                         else
                         {
-                            FindObjectOfType<HintBox>().Hint("The door is locked");
+                            FindObjectOfType<HintBox>().Hint("The door is locked i need to find a key or something..");
                             _door.DoorLocked();
                         }
                         break;
@@ -87,12 +85,14 @@ public class Interact : MonoBehaviour
                         break;
                     case "ExitDoor":
                         if (FindObjectOfType<Generator>().generatorIsOn)
-                            GameManager.instance.EndGame();
+                            FindObjectOfType<GameManager>().EndGame();
                         break;
                     case "Valve":
                         hit.collider.gameObject.GetComponent<Valve>().TurnValve();
                         break;
-
+                    case "Paper":
+                        hit.collider.GetComponent<Paper>().ShowPaper();
+                        break;
                 }
             }
         }

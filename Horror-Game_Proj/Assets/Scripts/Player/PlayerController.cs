@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private const float staminaDecreasePerFrame = 1.0f;
     private const float staminaIncreasePerFrame = 3.0f;
     private const float staminaTimeToRegen = 3.0f;
-    private float runspeed = 8;
+    private float runspeed = 450;
     private bool playerTired = false;
     private Transform newAngleRight;
     private Transform newAngleLeft;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MouseController();
-        //Flashlight();
+        Flashlight();
         Stamina();
         Crouching();
         Lean();
@@ -85,10 +85,14 @@ public class PlayerController : MonoBehaviour
     {
         float x_ = Input.GetAxis("Horizontal");
         float z_ = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(x_, 0f, z_);
+        float yMove = rb.velocity.y;
+        Vector3 movement = new Vector3(x_,0, z_);
         movement.Normalize();
-        movement *= speed * Time.deltaTime;
-        transform.Translate(movement);
+        movement = transform.TransformDirection(movement);
+        movement.x *= speed * Time.deltaTime;
+        movement.z *= speed * Time.deltaTime;
+        movement.y = yMove;
+        rb.velocity = movement;
         if (movement.magnitude > 0.1f * Time.deltaTime)
             playerWalking = true;
         else
@@ -240,7 +244,7 @@ public class PlayerController : MonoBehaviour
 
     public bool grounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 1, ground))
+        if (Physics.Raycast(transform.position, Vector3.down, playerHeight / 2, ground))
             return true;
         else
             return false;

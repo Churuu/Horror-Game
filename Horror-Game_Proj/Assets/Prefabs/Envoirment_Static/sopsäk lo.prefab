@@ -22,12 +22,13 @@ GameObject:
   - component: {fileID: 33043968807049844}
   - component: {fileID: 23545422008744798}
   - component: {fileID: 95283114590456372}
+  - component: {fileID: 64360107085568286}
   m_Layer: 0
   m_Name: "sops\xE4k lo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4828853189554870
 Transform:
@@ -35,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833945976919196}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.293, y: -0.006, z: -11.73028}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: 0.59088475, y: -0.5908852, z: 0.38840064, w: 0.38840032}
+  m_LocalPosition: {x: -1.2037162, y: -5.588146, z: 24.880157}
+  m_LocalScale: {x: 5.0000105, y: 5, z: 5.0000114}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.521, y: 1.9300001, z: -443.614}
 --- !u!23 &23545422008744798
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,6 +83,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833945976919196}
+  m_Mesh: {fileID: 4300000, guid: 196f8cfe81941754ca5ea0e4754f353e, type: 3}
+--- !u!64 &64360107085568286
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833945976919196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 196f8cfe81941754ca5ea0e4754f353e, type: 3}
 --- !u!95 &95283114590456372
 Animator:

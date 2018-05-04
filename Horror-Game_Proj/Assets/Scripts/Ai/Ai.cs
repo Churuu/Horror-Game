@@ -17,7 +17,9 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public Image fade;
-    public AudioClip[] sounds; // 0 Walking, 1 Scary angry sound
+    public AudioClip detectionSound;
+    public AudioClip walkingSound;
+    public AudioClip[] scareSounds;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -26,14 +28,15 @@ public class Ai : MonoBehaviour
     [HideInInspector] public bool playerHiding = false;
 
 
+    private GameObject[] rooms;
     private GameObject player;
     private GameObject room;
     private Vector3 AiDestination;
     private int patrollingPoint = 0;
     private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
+    private bool firstDetection = true;
     private Animator _anim;
-    private GameObject[] roomHolder;
     private float stepCycle = .7f;
     private float stepCycleCounter;
     private float soundCycleCounter;
@@ -46,7 +49,7 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        roomHolder = GameObject.FindGameObjectsWithTag("Room");
+        rooms = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
         stepCycleCounter = Time.time + stepCycle;
@@ -115,6 +118,12 @@ public class Ai : MonoBehaviour
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
                     state = AiState.chasePlayer;
+
+                    if(firstDetection)
+                    {
+                        firstDetection = false;
+                        src.PlayOneShot(detectionSound);
+                    }
                 }
             }
         }
@@ -140,14 +149,22 @@ public class Ai : MonoBehaviour
 
         if (!agent.pathPending)
             if (agent.remainingDistance <= 0.1f)
+            {
+                firstDetection = true;
                 Invoke("ReturnToRoomPatrol", 1);
+            }
     }
 
     public void PatrolRoom()
     {
         if (!patrollingRoom)
         {
-            room = roomHolder[UnityEngine.Random.Range(0, roomHolder.Length)];
+            if (rooms.Length == 0)
+            {
+                Debug.LogError("AI'n har inga rum att gå till, skapa ett rum för monstret att gå till! Kom ihåg att du måste dra in de rum den ska gå till också på monstret");
+                return;
+            }
+            room = rooms[UnityEngine.Random.Range(0, rooms.Length)];
             AiDestination = GetRandomPosInsideBox(room.transform.position, room.GetComponent<Collider>().bounds.size);
             if (!Physics.CheckSphere(AiDestination, 0.3f))
             {
@@ -235,8 +252,11 @@ public class Ai : MonoBehaviour
         float target = Mathf.Clamp01(distance);
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
-        if (target == 1)
-            player.transform.position = new Vector3(16, 2, -22);
+        if (target >= 0.9f)
+        {
+            FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
+            FindObjectOfType<GameManager>().locked = false;
+        }
     }
 
 
@@ -245,7 +265,7 @@ public class Ai : MonoBehaviour
         if (Time.time > stepCycleCounter && agent.velocity.magnitude > 0)
         {
             stepCycleCounter = Time.time + stepCycle;
-            src.PlayOneShot(sounds[0], 1);
+            src.PlayOneShot(walkingSound);
         }
     }
 
@@ -254,7 +274,7 @@ public class Ai : MonoBehaviour
         if (Time.time > soundCycleCounter)
         {
             soundCycleCounter = Time.time + UnityEngine.Random.Range(30, 300);
-            src.PlayOneShot(sounds[UnityEngine.Random.Range(1, 4)], 1);
+            src.PlayOneShot(scareSounds[UnityEngine.Random.Range(0, scareSounds.Length)]);
         }
     }
 }

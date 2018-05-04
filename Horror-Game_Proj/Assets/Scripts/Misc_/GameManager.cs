@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
     public string sceneToSwitch;
     public AnimationClip fadeAnimation;
     public Animator _anim;
-    bool locked = true;
+    public bool locked = true;
 
 
     void Start()
@@ -23,9 +22,15 @@ public class GameManager : MonoBehaviour
             locked = !locked;
 
         if (locked)
+        {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         else
+        {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
     }
 
@@ -37,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void SwitchScene()
     {
-        Cursor.lockState = CursorLockMode.None;
+        locked = false;
         SceneManager.LoadScene(sceneToSwitch);
     }
 }
