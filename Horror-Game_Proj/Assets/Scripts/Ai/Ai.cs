@@ -255,7 +255,7 @@ public class Ai : MonoBehaviour
         if (target >= 0.9f)
         {
             FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
-            FindObjectOfType<GameManager>().locked = false;
+            FindObjectOfType<GameManager>().UnlockMouse();
         }
     }
 
