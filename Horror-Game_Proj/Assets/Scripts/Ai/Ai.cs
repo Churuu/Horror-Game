@@ -254,8 +254,8 @@ public class Ai : MonoBehaviour
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
         if (target >= 0.9f)
         {
-            FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
             FindObjectOfType<GameManager>().UnlockMouse();
+            FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
         }
     }
 
