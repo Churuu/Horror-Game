@@ -9,19 +9,12 @@ public class GameManager : MonoBehaviour
     public string sceneToSwitch;
     public AnimationClip fadeAnimation;
     public Animator _anim;
-    public bool locked = true;
+    public bool mouseLocked = true;
 
-
-    void Start()
-    {
-    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            locked = !locked;
-
-        if (locked)
+        if (mouseLocked)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -34,15 +27,26 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void UnlockMouse()
+    {
+        mouseLocked = false;
+    }
+
+    public void LockMouse()
+    {
+        mouseLocked = true;
+    }
+
     public void EndGame()
     {
         _anim.SetTrigger("Fade");
         Invoke("SwitchScene", fadeAnimation.length + 1);
+        mouseLocked = false;
     }
 
     private void SwitchScene()
     {
-        locked = false;
+        mouseLocked = false;
         SceneManager.LoadScene(sceneToSwitch);
     }
 }

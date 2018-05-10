@@ -23,7 +23,7 @@ public class PhoneBob : MonoBehaviour
 
     void Update()
     {
-        if (!FindObjectOfType<NightVision>().visionEnabled)
+        if (!FindObjectOfType<NightVision>().visionEnabled && !FindObjectOfType<Pause>().isPaused)
         {
             Sway();
             bobbing();

@@ -54,19 +54,35 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MouseController();
-        Flashlight();
-        Stamina();
-        Crouching();
-        Lean();
-        Jump();
+        if (FindObjectOfType<Pause>() != null)
+        {
+            if (!FindObjectOfType<Pause>().isPaused)
+            {
+                MouseController();
+                PlayerWalking();
+                Flashlight();
+                Stamina();
+                Crouching();
+                Lean();
+                Jump();
+            }
+        }
+        else
+        {
+            MouseController();
+            PlayerWalking();
+            Flashlight();
+            Stamina();
+            Crouching();
+            Lean();
+            Jump();
+        }
     }
 
 
 
     void FixedUpdate()
     {
-        PlayerWalking();
     }
 
 
@@ -86,7 +102,7 @@ public class PlayerController : MonoBehaviour
         float x_ = Input.GetAxis("Horizontal");
         float z_ = Input.GetAxis("Vertical");
         float yMove = rb.velocity.y;
-        Vector3 movement = new Vector3(x_,0, z_);
+        Vector3 movement = new Vector3(x_, 0, z_);
         movement.Normalize();
         movement = transform.TransformDirection(movement);
         movement.x *= speed * Time.deltaTime;
@@ -254,7 +270,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Ai")
             FindObjectOfType<QuickSaveSystem>().Load();
-        if(other.gameObject != null && Physics.Raycast(transform.position, Vector3.down))
+        if (other.gameObject != null && Physics.Raycast(transform.position, Vector3.down))
             GetComponent<AudioSource>().PlayOneShot(landSound);
     }
 }
