@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public string sceneToSwitch;
     public AnimationClip fadeAnimation;
     public Animator _anim;
-    bool locked = true;
+    public bool locked = true;
 
 
     void Start()

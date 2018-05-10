@@ -17,8 +17,9 @@ public class Ai : MonoBehaviour
     [Range(1, 10)] public float walkingSpeed;
     [Range(100, 180)] public int fieldOfViewAngle;
     public Image fade;
-    public AudioClip[] sounds; // 0 Walking, 1 Scary angry sound
-    public GameObject[] rooms;
+    public AudioClip detectionSound;
+    public AudioClip walkingSound;
+    public AudioClip[] scareSounds;
     [HideInInspector] public List<Transform> aiPointToPatrol;
     [HideInInspector] public bool playerIsVisible = false;
     [HideInInspector] public GameObject currentFloorToPatrol;
@@ -27,18 +28,19 @@ public class Ai : MonoBehaviour
     [HideInInspector] public bool playerHiding = false;
 
 
+    private GameObject[] rooms;
     private GameObject player;
     private GameObject room;
     private Vector3 AiDestination;
     private int patrollingPoint = 0;
     private bool patrollingKeyRoom = false;
     private bool patrollingRoom;
+    private bool firstDetection = true;
     private Animator _anim;
     private float stepCycle = .7f;
     private float stepCycleCounter;
     private float soundCycleCounter;
     private AudioSource src;
-    private Vector3 playerStartingPos;
 
 
 
@@ -47,13 +49,12 @@ public class Ai : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //rooms = GameObject.FindGameObjectsWithTag("Room");
+        rooms = GameObject.FindGameObjectsWithTag("Room");
         player = GameObject.FindGameObjectWithTag("Player");
         _anim = GetComponent<Animator>();
         stepCycleCounter = Time.time + stepCycle;
         soundCycleCounter = Time.time + UnityEngine.Random.Range(30, 300);
         src = GetComponent<AudioSource>();
-        playerStartingPos = player.transform.position;
 
     }
 
@@ -117,6 +118,12 @@ public class Ai : MonoBehaviour
                     playerIsVisible = true;
                     PlayerLastSighting = player.transform.position;
                     state = AiState.chasePlayer;
+
+                    if(firstDetection)
+                    {
+                        firstDetection = false;
+                        src.PlayOneShot(detectionSound);
+                    }
                 }
             }
         }
@@ -142,7 +149,10 @@ public class Ai : MonoBehaviour
 
         if (!agent.pathPending)
             if (agent.remainingDistance <= 0.1f)
+            {
+                firstDetection = true;
                 Invoke("ReturnToRoomPatrol", 1);
+            }
     }
 
     public void PatrolRoom()
@@ -243,7 +253,10 @@ public class Ai : MonoBehaviour
         target = target / distance;
         fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, target);
         if (target >= 0.9f)
-            player.transform.position = playerStartingPos;
+        {
+            FindObjectOfType<SceneHandler>().SwitchScene("DeathScene");
+            FindObjectOfType<GameManager>().locked = false;
+        }
     }
 
 
@@ -252,7 +265,7 @@ public class Ai : MonoBehaviour
         if (Time.time > stepCycleCounter && agent.velocity.magnitude > 0)
         {
             stepCycleCounter = Time.time + stepCycle;
-            src.PlayOneShot(sounds[0], 1);
+            src.PlayOneShot(walkingSound);
         }
     }
 
@@ -261,7 +274,7 @@ public class Ai : MonoBehaviour
         if (Time.time > soundCycleCounter)
         {
             soundCycleCounter = Time.time + UnityEngine.Random.Range(30, 300);
-            src.PlayOneShot(sounds[UnityEngine.Random.Range(1, 2)], 1);
+            src.PlayOneShot(scareSounds[UnityEngine.Random.Range(0, scareSounds.Length)]);
         }
     }
 }
